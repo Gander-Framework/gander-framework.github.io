@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en-US" prefix="og: http://opg.me/ns#">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="title" property="og:title" content="Gander" />
+
+  <meta name="description" property="og:description"
+    content="Gander is an open-source solution for deploying isolated, ephemeral apps based on your pull requests" />
+
+  <meta name="type" property="og:type" content="website" />
+
+  <meta name="url" property="og:url" content="https://gander-framework.github.io/" />
+
+  <meta name="image" property="og:image" content="images/logos/gander-logo-linkedin-feature.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="author" content="Sheila Babadi, Chris Durand, Andrew Jones, Melinda Lim" />
+
+  <link rel="manifest" href="/images/icons/favicons/site.webmanifest" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicons/favicon-16x16.png" />
+  <link rel="mask-icon" href="/images/icons/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  <link rel="shortcut icon" href="/images/icons/favicons/favicon.ico" />
+  <meta name="msapplication-TileColor" content="#ee6f57" />
+  <meta name="msapplication-config" content="/images/icons/favicons/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <title>Gander</title>
+
+
+
+  <!-- <style>reset</style> -->
+
+  <link rel="stylesheet" href="stylesheets/reset.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/gruvbox-dark.min.css"
+    charset="utf-8" />
+
+  <!-- <style></style> -->
+
+  <link rel="stylesheet" href="stylesheets/main.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- <script></script> -->
+
+  <script src="javascripts/application.js"></script>
+
+  <style></style>
+</head>
+
+<body>
+  <div class="logo-links">
+    <p id="gander-logo">MENU</p>
+
+    <a href="https://github.com/gander-framework/gander-cli" target="_blank">
+      <img src="images/logos/github_black.png" alt="github logo" id="github-logo" />
+    </a>
+  </div>
+  <a id="toTop-link" href="#" target="_blank">
+    <img src="images/logos/back-to-top.png" alt="Back to top" id="toTop-logo" />
+  </a>
+  <nav id="site-navigation">
+    <ul>
+      <li>
+        <a href="#home" id="home-link">HOME</a>
+      </li>
+
+      <li>
+        <a href="#case-study" id="case-study-link">CASE STUDY</a>
+
+        <nav id="case-study-mobile">
+          <ul></ul>
+        </nav>
+      </li>
+
+      <li>
+        <a href="#our-team" id="our-team-link">OUR TEAM</a>
+      </li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <h1>
+      <img src="images/logos/gander_logo_color.png" alt="Gander logo" />
+
+      <p style="font-size:3.5rem">
+        Automatically deploy
+        <b style="color:#fad4cd;" id="spin">isolated</b><br />
+        review apps for <br /> every pull request
+      </p>
+    </h1>
+  </header>
+
+  <section class="integration">
+    <div class="box">
+      <img id="banner-deploy" src="images/diagrams/gifs/pretty-gif.gif" alt="pretty picture" />
+    </div>
+
+    <article class="box">
+      <div class="text-box">
+        <h1>Automate Review Apps</h1>
+
+        <p>
+          Gander automatically deploys a review app based on your GitHub code every time you make a pull request. A
+          comment appears on your pull request with a live, shareable link to your review app.
+        </p>
+
+        <!-- <a class="button" href="#case-study">Learn More</a> -->
+      </div>
+    </article>
+  </section>
+
+  <section class="integration">
+    <article class="box">
+      <div class="text-box">
+        <h1>Isolated and Ephemeral</h1>
+
+        <p>
+          Gander isolates review apps from each other, and automatically disposes of them after the pull request is
+          closed.
+        </p>
+        <!-- <p>
+          Gander containerizes your source code before deploying it to a dedicated VPC on your AWS infrastructure. Each
+          app runs as a service on AWS until you close the original pull request, and you can simultaneously deploy as
+          many review apps as you would like.
+        </p> -->
+
+        <!-- <a class="button" href="#case-study">Learn More</a> -->
+      </div>
+    </article>
+
+    <div class="box">
+      <img id="banner-deploy" src="images/diagrams/gifs/ezgif-2-9b31e6374cba.gif" class="softened"
+        alt="Another Pretty Picture" />
+    </div>
+  </section>
+
+  <section class="integration">
+    <div class="box">
+      <img id="banner-deploy" src="images/diagrams/banner3.png" class="softened" alt="Picture showing ease of use" />
+    </div>
+
+    <article class="box">
+      <div class="text-box">
+        <h1>Full-Stack</h1>
+
+        <p>
+          Gander provides each review app with its own database server, so that you can test the functionality of each
+          pull request with its own independently persisted data.
+        </p>
+
+        <!-- <a class="button" href="#case-study">Learn More</a> -->
+      </div>
+    </article>
+  </section>
+
+  <main>
+    <section id="case-study">
+      <h1>Case Study</h1>
+      <!-- <p class="subheader">
+            One place to log and control service-to-service traffic
+          </p> -->
+
+      <div id="side-nav">
+        <a href="#home">
+          <img src="images/logos/gander_logo.png" alt="Gander logo" />
+        </a>
+      </div>
+
+      <nav>
+        <ul></ul>
+      </nav>
+      <h2 id="introduction">1) Introduction</h2>
+      <h3 id="design-goals">1.1) Design Goals</h3>
+      <h3 id="gander-features">1.2) Gander Features</h3>
+      <h3 id="what-gander-supports">1.3) What Gander Supports</h3>
+      <h2 id="review-apps">2) Review Apps</h2>
+      <h3 id="review-apps-in-a-development-flow">2.1) Review Apps in a Development Flow</h3>
+      <h3 id="shortening-the-feedback-loop-with-review-apps">2.2) Shortening the Feedback Loop with Review Apps</h3>
+      <h2 id="existing-solutions">3) Existing Solutions</h2>
+      <h3 id="review-apps-as-a-feature">3.1) Review Apps as a Feature</h3>
+      <h3 id="review-apps-as-a-service">3.2) Review Apps as a Service</h3>
+      <h3 id="diy-solution">3.3) DIY Solution</h3>
+      <h2 id="architecture-overview">4) Architecture Overview</h2>
+      <h3 id="command-line-interface">4.1) Command Line Interface</h3>
+      <h3 id="github-actions">4.2) Github Actions</h3>
+      <h3 id="amazon-web-services">4.3) Amazon Web Services</h3>
+      <h2 id="responding-to-pull-requests">5) Responding to Pull Requests</h2>
+      <h3 id="why-pull-requests">5.1) Why Pull Requests</h3>
+      <h3 id="webhooks">5.2) Webhooks</h3>
+      <h3 id="github-actions">5.3) Github Actions</h3>
+      <h2 id="building-applications">6) Building Applications</h2>
+      <h2 id="managing-running-applications">7) Managing Running Applications</h2>
+      <h2 id="persisting-data">8) Persisting Data</h2>
+      <h3 id="container-filesystems">8.1) Container Filesystems</h3>
+      <h3 id="volumes">8.2) Volumes</h3>
+      <h3 id="elastic-file-system">8.3) Elastic File System</h3>
+      <h2 id="seeding-the-database">9) Seeding the Database</h2>
+      <h3 id="initializing-the-postgres-image">9.1) Initializing the Postgres Image</h3>
+      <h3 id="extend-the-default-postgres-image">9.2) Extend the Default Postgres Image</h3>
+      <h3 id="custom-linux-image">9.3) Custom Linux Image</h3>
+      <h2 id="routing-traffic">10) Routing Traffic</h2>
+      <h3 id="domain-names">10.1) Domain Names</h3>
+      <h3 id="application-layer-routing">10.2) Application Layer Routing</h3>
+      <h3 id="layer-seven-load-balancer">10.3) Layer Seven Load Balancer</h3>
+      <h2 id="using-gander">11) Using Gander</h2>
+      <h2 id="future-work">12) Future Work</h2>
+      <!-- <h2 id="introduction">1) Introduction</h2>
+
+      <p>
+        Apex is gone. There's a new goose on the block.
+      </p>
+
+      <p>
+        This is an example of a footnote.
+        [<a href="#footnote-1">1</a>]
+      </p>
+
+      <h2 id="another-major-section">2) Another Major Section</h2>
+
+      <p>
+        Ryan Goosling approves.
+        Nostrud laboris et occaecat cillum minim dolore consectetur aliquip consequat Lorem aute occaecat. Consequat
+        adipisicing esse dolore ad voluptate qui Lorem. Culpa ea ut in consectetur nisi aliqua aliqua magna irure ut.
+        Sit cupidatat sunt esse minim nisi. Esse aute cillum nostrud laboris Lorem proident quis ullamco velit.
+        Excepteur nisi pariatur qui laborum deserunt quis anim veniam.
+
+        Adipisicing non fugiat Lorem est. Tempor sint eu enim veniam eiusmod sunt commodo est laboris labore ad tempor.
+        Ut duis nostrud mollit labore laborum aliqua cupidatat.
+
+        Ad amet reprehenderit mollit enim ea anim duis reprehenderit ipsum reprehenderit consectetur culpa. Do non ut
+        tempor consectetur velit. Laborum adipisicing enim sunt aliquip proident est tempor sit ex quis sit. Irure
+        mollit id tempor enim occaecat qui ad nisi. Fugiat sunt fugiat qui do pariatur tempor laborum commodo Lorem
+        adipisicing ut dolor anim exercitation. Do occaecat adipisicing dolor voluptate nostrud consectetur eu est
+        occaecat. Velit minim laborum labore minim occaecat.
+      </p>
+
+      <h3 id="minor-section-one">2.1) Minor Section One</h3>
+
+      <p>
+        Pariatur tempor duis velit labore cupidatat est et mollit. Minim ipsum ut nulla qui non excepteur. Proident
+        aliquip ad in ea cillum.
+        Proident ad non cupidatat aute excepteur est adipisicing commodo aute deserunt deserunt duis officia. Consequat
+        id consectetur reprehenderit commodo fugiat pariatur laborum commodo irure minim minim consequat irure elit.
+        Amet fugiat fugiat esse consequat laboris ut officia velit consectetur. Dolor eiusmod consequat Lorem elit
+        exercitation adipisicing Lorem duis eiusmod reprehenderit ex. Culpa laboris cupidatat ad amet et ullamco
+        occaecat amet aliqua velit. Consequat et in cupidatat Lorem laborum mollit amet veniam incididunt minim est
+        culpa ipsum eiusmod. Cupidatat reprehenderit esse qui veniam aliquip mollit.
+      </p>
+
+      <div class="img-wrapper">
+        <img src="images/diagrams/2.1) Monolith.png" alt="Example Image Markup" />
+      </div>
+
+      <h3 id="minor-section-two">2.2) Minor Section Two</h3>
+
+      <h4 id="sub-minor-section-one">2.2.1) Sub Minor Section One</h4>
+      <h4 id="sub-minor-section-two">2.2.2) Sub Minor Section Two</h4>
+      <div class="img-wrapper">
+        <img src="images/diagrams/2.1) Monolith.png" alt="Example Image Markup" />
+      </div>
+
+      <h3 id="not-a-section">2.3) Not a section</h3>
+
+      <p>
+        The end is nigh!
+      </p> -->
+
+      <section id="footnotes">
+        <h2 id="references">13) References</h2>
+
+        <ol>
+          <li id="footnote-1">
+            <a href="https://martinfowler.com/articles/microservice-trade-offs.html"
+              target="_blank">https://martinfowler.com/articles/microservice-trade-offs.html</a>
+          </li>
+          <li id="footnote-2">
+            <a href="https://www.cl.cam.ac.uk/research/srg/netos/projects/ipc-bench/results.html"
+              target="_blank">https://www.cl.cam.ac.uk/research/srg/netos/projects/ipc-bench/results.html</a>
+          </li>
+        </ol>
+
+        Icons made by
+        <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a>,
+        <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons" target="_blank">Those Icons</a>,
+        <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry" target="_blank">Kiranshastry</a>,
+        <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a>,
+        <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect" target="_blank">Pixel
+          perfect</a>, and
+        <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp" target="_blank">Eucalyp</a>
+        from
+        <a href="https://www.flaticon.com/" title="Flaticon" target="_blank"> www.flaticon.com</a>.
+      </section>
+    </section>
+  </main>
+
+  <section id="our-team">
+    <h1>Our Team</h1>
+
+    <p>
+      We are looking for opportunities. If you like our project, feel free to reach out!
+    </p>
+
+    <ul>
+      <li class="individual">
+        <img src="https://avatars.githubusercontent.com/u/14238948?v=4" alt="Sheila Babadi" />
+
+        <h3 id="sheila-babadi">Sheila Babadi</h3>
+
+        <p>Jacksonville, FL</p>
+
+        <ul class="social-icons">
+          <li>
+            <a href="mailto:sheila.babadi@yahoo.com" target="">
+              <img src="images/icons/email_icon.png" alt="email" />
+            </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/sjbabadi" target="_blank">
+              <img src="images/logos/github_orange.png" alt="github" />
+            </a>
+          </li>
+
+          <!-- <li>
+            <a href="https://github.com/sjbabadi" target="_blank">
+              <img src="images/icons/website_icon.png" alt="website" />
+            </a>
+          </li> -->
+
+          <li>
+            <a href="https://www.linkedin.com/in/sjbabadi/" target="_blank">
+              <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="individual">
+        <img src="https://avatars.githubusercontent.com/u/44622682?v=4" alt="Chris Durand" />
+
+        <h3 id="chris-durand">Chris Durand</h3>
+
+        <p>New York, NY</p>
+
+        <ul class="social-icons">
+          <li>
+            <a href="mailto:chris@cdurand.net" target="">
+              <img src="images/icons/email_icon.png" alt="email" />
+            </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/ChristopherDurand" target="_blank">
+              <img src="images/logos/github_orange.png" alt="github" />
+            </a>
+          </li>
+
+          <!-- <li>
+            <a href="https://github.com/sjbabadi" target="_blank">
+              <img src="images/icons/website_icon.png" alt="website" />
+            </a>
+          </li> -->
+
+          <li>
+            <a href="https://www.linkedin.com/in/christopher-durand/" target="_blank">
+              <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="individual">
+        <img src="https://avatars.githubusercontent.com/u/45316387?v=4" alt="Andrew Jones" />
+
+        <h3 id="andrew-jones">Andrew Jones</h3>
+
+        <p>Austin, TX</p>
+
+        <ul class="social-icons">
+          <li>
+            <a href="mailto:andrewrayjones@gmail.com" target="">
+              <img src="images/icons/email_icon.png" alt="email" />
+            </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/jonesan2" target="_blank">
+              <img src="images/logos/github_orange.png" alt="github" />
+            </a>
+          </li>
+
+          <!-- <li>
+            <a href="https://github.com/sjbabadi" target="_blank">
+              <img src="images/icons/website_icon.png" alt="website" />
+            </a>
+          </li> -->
+
+          <li>
+            <a href="https://www.linkedin.com/in/andrew-jones-a0955916/" target="_blank">
+              <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="individual">
+        <img src="https://avatars.githubusercontent.com/u/39564395?v=4" alt="Melinda Lim" />
+
+        <h3 id="melinda-lim">Melinda Lim</h3>
+
+        <p>Los Angeles, CA</p>
+
+        <ul class="social-icons">
+          <li>
+            <a href="mailto:melinda.hl.lim@gmail.com" target="">
+              <img src="images/icons/email_icon.png" alt="email" />
+            </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/melinda-hl-lim" target="_blank">
+              <img src="images/logos/github_orange.png" alt="github" />
+            </a>
+          </li>
+
+          <!-- <li>
+            <a href="https://github.com/sjbabadi" target="_blank">
+              <img src="images/icons/website_icon.png" alt="website" />
+            </a>
+          </li> -->
+
+          <li>
+            <a href="https://www.linkedin.com/in/melinda-h-l-lim/" target="_blank">
+              <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</body>
+
+</html>
