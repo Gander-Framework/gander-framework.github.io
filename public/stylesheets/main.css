@@ -165,7 +165,7 @@ a:hover {
 }
 
 .integration img {
-  max-width: 600px;
+  max-width: 800px;  /* originally 600px */
   width: 100%;
   padding-top: 40px;
 }
