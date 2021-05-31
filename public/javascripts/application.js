@@ -9,7 +9,68 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("spin").innerHTML = words[i];
     }
     setInterval(_changeText, 1250);
-  })()
+  })();
+  const rotateImages = ({images, descriptors, selector, interval}) => {
+    let i = -1;
+    const _changeImage = () => {
+      i = (i + 1) % images.length;
+      document.querySelector(`#${selector} > p`).innerHTML = descriptors[i];
+      document.querySelector(`#${selector} > img`).src = 'images/diagrams/' + images[i];
+    }
+    _changeImage();
+    setInterval(_changeImage, interval)
+  }
+  rotateImages({
+    selector: 'lost-data',
+    images: ["lost-data-1.png","lost-data-2.png", "lost-data-3.png"],
+    descriptors: [
+      "1. Data can be stored inside the container",
+      "2. Containers can restart suddenly",
+      "3. Data was lost in ephemeral file system"
+    ],
+    interval: 3000
+  });
+  rotateImages({
+    selector: 'preserve-data',
+    images: ['preserve-data-1.png','preserve-data-2.png','preserve-data-3.png'],
+    descriptors: [
+      '1. Data is written to EFS', 
+      '2. Containers can restart suddenly', 
+      '3. Data was retrieved from EFS after restart'
+    ],
+    interval: 3000
+  });
+  rotateImages({
+    selector: 'seed-efs',
+    images: ['copy-script.png','seed-from-efs.png'],
+    descriptors: [
+      '1. SQL script copied to EFS', 
+      '2. Postgres can be initialzed'
+    ],
+    interval: 5000
+  });
+  rotateImages({
+    selector: 'lost-route',
+    images: ['lost-route-1.png','lost-route-2.png','lost-route-3.png'],
+    descriptors: [
+      '1. Initially, the route works',
+      '2. The Task can restart suddenly',
+      '3. The new ENI has a different domain name'
+    ],
+    interval: 3000
+  });
+ 
+  rotateImages({
+    selector: 'preserved-route',
+    images: ['preserved-route-1.png','preserved-route-2.png','preserved-route-3.png'],
+    descriptors: [
+      '1. The link routes to the app through the load balancer',
+      '2. The Task can restart suddenly',
+      '3. The new task automatically registers to the load balancer'
+    ],
+    interval: 3000
+  });
+ 
   const ganderWhite = '#F6F5F5';
   const ganderOrange = '#EE6F57';
   const ganderBlue = '#88D7C6';

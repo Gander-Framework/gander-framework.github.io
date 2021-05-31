@@ -124,7 +124,8 @@
         <h1>Isolated and Ephemeral</h1>
 
         <p>
-          Gander containerizes review apps into isolated environments and automatically disposes of them after the pull request is closed.
+          Gander containerizes review apps into isolated environments and automatically disposes of them after the pull
+          request is closed.
         </p>
         <!-- <p>
           Gander containerizes your source code before deploying it to a dedicated VPC on your AWS infrastructure. Each
@@ -179,25 +180,40 @@
       </nav>
       <h2 id="introduction">1) Introduction</h2>
       <p>
-        Gander allows developers to create temporary deployments of their latest code changes upon creating a pull request. These deployments, known as "review apps", serve as isolated environments to visually examine UI changes and interactively test new and updated behaviours. Because these deployments are accessible via a shareable link, reviewers no longer have to download the code base and build the application, and developers can easily include non-technical stakeholders in these reviews. 
+        Gander allows developers to create temporary deployments of their latest code changes upon creating a pull
+        request. These deployments, known as "review apps", serve as isolated environments to visually examine UI
+        changes and interactively test new and updated behaviours. Because these deployments are accessible via a
+        shareable link, reviewers no longer have to download the code base and build the application, and developers can
+        easily include non-technical stakeholders in these reviews.
       </p>
       <p>
-        Built on top of GitHub Actions, AWS, and Node.js, Gander creates infrastructure for hosting your review apps and fully automates the process of spinning up, managing, and tearing them down. Gander is open-source, self-hosted, and ready to use within minutes of installation.
+        Built on top of GitHub Actions, AWS, and Node.js, Gander creates infrastructure for hosting your review apps and
+        fully automates the process of spinning up, managing, and tearing them down. Gander is open-source, self-hosted,
+        and ready to use within minutes of installation.
       </p>
       <h3 id="design-goals">1.1) Design Goals</h3>
       <p>
-        Gander is a tool to automate review apps and ultimately make the code review process more convenient for developers and more accessible to non-technical team members. We designed Gander with the following goals in mind:
+        Gander is a tool to automate review apps and ultimately make the code review process more convenient for
+        developers and more accessible to non-technical team members. We designed Gander with the following goals in
+        mind:
       </p>
       <ul>
-        <li><strong>Convenience — </strong> The tool should be easy to install and configure, and it should automatically spin up a review app for every pull request.</li>
-        <li><strong>Versatility — </strong>The tool can be dropped into any existing pipeline or CI/CD workflow with minimal setup.</li>
-        <li><strong>Cost-Efficiency — </strong> The user should only incur expenses for the resources used on AWS, with no need for an opaque monthly fee.</li>
-        <li><strong>Control — </strong> The tool should rely on the user's cloud infrastructure, so the user can maintain control over their own data.</li>
+        <li><strong>Convenience — </strong> The tool should be easy to install and configure, and it should
+          automatically spin up a review app for every pull request.</li>
+        <li><strong>Versatility — </strong>The tool can be dropped into any existing pipeline or CI/CD workflow with
+          minimal setup.</li>
+        <li><strong>Cost-Efficiency — </strong> The user should only incur expenses for the resources used on AWS, with
+          no need for an opaque monthly fee.</li>
+        <li><strong>Control — </strong> The tool should rely on the user's cloud infrastructure, so the user can
+          maintain control over their own data.</li>
       </ul>
       <h3 id="gander-features">1.2) Gander Features</h3>
       <p>
-        As review apps are simply tools to make the development and reviewing processes more convenient, we strove to make Gander as easy to use and as configuration-free as possible. Simply bring a code repository and your AWS credentials, and Gander takes care of the rest. With a simple command in our CLI and no required config files, Gander users can:
-      
+        As review apps are simply tools to make the development and reviewing processes more convenient, we strove to
+        make Gander as easy to use and as configuration-free as possible. Simply bring a code repository and your AWS
+        credentials, and Gander takes care of the rest. With a simple command in our CLI and no required config files,
+        Gander users can:
+
       <ul>
         <li>Provision all AWS resources required to create the infrastructure needed to host the review apps</li>
         <li>Tear down all AWS resources used in said infrastructure </li>
@@ -212,30 +228,36 @@
       </p>
       <p>
         In addition to automating all builds and tear downs, Gander:
-        <ul>
-          <li>Generates a live, semantic URL with your custom domain for each review app</li>
-          <li>Posts this URL on the pull request of the corresponding review app</li>
-          <li>Maintains the URL through PR updates</li>
-          <li>Supports multiple languages, including JavaScript, Ruby, Python and Go</li>
-        </ul>
+      <ul>
+        <li>Generates a live, semantic URL with your custom domain for each review app</li>
+        <li>Posts this URL on the pull request of the corresponding review app</li>
+        <li>Maintains the URL through PR updates</li>
+        <li>Supports multiple languages, including JavaScript, Ruby, Python and Go</li>
+      </ul>
       </p>
 
       <h3 id="what-gander-supports">1.3) What Gander Supports</h3>
       <p>Currently, Gander only supports:
-        <ul>
-          <li>Existing GitHub repositories</li>
-          <li>Monolithic application architectures: if your application has components split across multiple code bases, then Gander isn't a compatible review app solution</li>
-          <li>Applications using a PostgreSQL database</li>
-          <li>Hosting review apps on AWS infrastructure</li>
-        </ul>
+      <ul>
+        <li>Existing GitHub repositories</li>
+        <li>Monolithic application architectures: if your application has components split across multiple code bases,
+          then Gander isn't a compatible review app solution</li>
+        <li>Applications using a PostgreSQL database</li>
+        <li>Hosting review apps on AWS infrastructure</li>
+      </ul>
       </p>
       <h2 id="review-apps">2) Review Apps</h2>
-      <p>Review apps are <em>ephemeral apps</em>, meaning they're temporary deployments with a self-contained version of your app [1, 4]. Generally speaking, these apps are created on demand each time a feature needs to be reviewed and then automatically deleted when the review is completed and the pull request is closed [1].</p>
-      <p>Review apps are easily shared, making it possible to include not only developers, but also non-technical reviewers during development. Team members such as designers, project managers, and clients can receive a link, try out new features in a browser and give feedback [2]. </p>
-      <blockquote>Review Apps provide easier and better testing for features and fixes in isolation . . . [They] speed up team decision-making so that you can deliver better apps faster, and with greater confidence.
-        
+      <p>Review apps are <em>ephemeral apps</em>, meaning they're temporary deployments with a self-contained version of
+        your app [1, 4]. Generally speaking, these apps are created on demand each time a feature needs to be reviewed
+        and then automatically deleted when the review is completed and the pull request is closed [1].</p>
+      <p>Review apps are easily shared, making it possible to include not only developers, but also non-technical
+        reviewers during development. Team members such as designers, project managers, and clients can receive a link,
+        try out new features in a browser and give feedback [2]. </p>
+      <blockquote>Review Apps provide easier and better testing for features and fixes in isolation . . . [They] speed
+        up team decision-making so that you can deliver better apps faster, and with greater confidence.
+
         <br /><br />
-- Heroku Pipelines [2, 3]
+        - Heroku Pipelines [2, 3]
       </blockquote>
 
       <h3 id="development-without-review-apps">2.1) Development without Review Apps</h3>
@@ -251,27 +273,43 @@
         <li>Open pull request to receive code reviews and merge feature</li>
       </ol>
       <p>
-        After the feature is merged back into the main branch, this feature will typically go through some development pipeline, which may include stages such as testing, QA checks, and deploying the application to a staging environment meant to mimic production conditions. The new feature is only reviewed visually in the later stages of the pipeline, possibly as late as the deployment to the staging environment. 
+        After the feature is merged back into the main branch, this feature will typically go through some development
+        pipeline, which may include stages such as testing, QA checks, and deploying the application to a staging
+        environment meant to mimic production conditions. The new feature is only reviewed visually in the later stages
+        of the pipeline, possibly as late as the deployment to the staging environment.
       </p>
-      <p>Thus, without review apps, non-technical stakeholders are only involved within the reviewing process after the code is merged, the PR is closed, and the app is deployed to some viewing environment such as staging. This means if there's an issue with some new feature, our developer would have to repeat the development cycle of branching, developing and merging before receiving another review. Moreover, the code itself would have to go through all the stages of the development pipeline before being viewed once again [1]. </p>
-      
+      <p>Thus, without review apps, non-technical stakeholders are only involved within the reviewing process after the
+        code is merged, the PR is closed, and the app is deployed to some viewing environment such as staging. This
+        means if there's an issue with some new feature, our developer would have to repeat the development cycle of
+        branching, developing and merging before receiving another review. Moreover, the code itself would have to go
+        through all the stages of the development pipeline before being viewed once again [1]. </p>
+
       <div class="img-wrapper">
         <img src="images/diagrams/dev_flow_w_o_review.png" alt="Development cycle without review apps" />
       </div>
       <h3 id="development-with-review-apps">2.1) Development with Review Apps</h3>
-      <P>Review apps provide an easy way to shorten the feedback loop between developers and non-developers. With review apps, our developer's cycle from above may now look something like this:</P>
-      
+      <P>Review apps provide an easy way to shorten the feedback loop between developers and non-developers. With review
+        apps, our developer's cycle from above may now look something like this:</P>
+
       <div class="img-wrapper">
         <img src="images/diagrams/dev_flow_w_review.png" alt="Development cycle without review apps" />
       </div>
-      <p>Before merging the feature into the main branch, we can create a review app and share it with other developers, designers, and clients for a truly well-rounded review process involving all stakeholders. Developers viewing the code will no longer have to guess what the code does, as they can interact with the application directly in their browser [2]. Designers can see how their creations integrate with users' interactions and experiences. Clients can step into their users' shoes and truly understand the digital experience created from their guidelines.</p>
-      <p>Most importantly, by involving more team members earlier within the development process, review apps can shorten the feedback loop and speed up the time for development [3]. This means that buggy code can be caught earlier in the process by QA teams, and never gets merged in the first place. This leads to a higher velocity of development, leading to an overall reduced cost of development.</p>
+      <p>Before merging the feature into the main branch, we can create a review app and share it with other developers,
+        designers, and clients for a truly well-rounded review process involving all stakeholders. Developers viewing
+        the code will no longer have to guess what the code does, as they can interact with the application directly in
+        their browser [2]. Designers can see how their creations integrate with users' interactions and experiences.
+        Clients can step into their users' shoes and truly understand the digital experience created from their
+        guidelines.</p>
+      <p>Most importantly, by involving more team members earlier within the development process, review apps can
+        shorten the feedback loop and speed up the time for development [3]. This means that buggy code can be caught
+        earlier in the process by QA teams, and never gets merged in the first place. This leads to a higher velocity of
+        development, leading to an overall reduced cost of development.</p>
       <p>All in all, review apps are a convenient tool to help developers:
-        <ul>
-          <li>review and get feedback on features earlier within a development cycle,</li>
-          <li>include more people - both developers and non-developers - in the reviewing process,</li>
-          <li>review code changes both visually and through code reviews.</li>
-        </ul>
+      <ul>
+        <li>review and get feedback on features earlier within a development cycle,</li>
+        <li>include more people - both developers and non-developers - in the reviewing process,</li>
+        <li>review code changes both visually and through code reviews.</li>
+      </ul>
       </p>
 
 
@@ -282,47 +320,89 @@
         <li>Review apps as a service</li>
       </ol>
       <h3 id="review-apps-as-a-feature">3.1) Review Apps as a Feature</h3>
-      <p>The first category is review apps as a feature of a larger service. For example, products like Heroku Pipelines provide review apps as one part of a full continuous delivery pipeline they call Heroku Flow. For some users, this would be an excellent fit, due to the convenience of delegating all stages of the development pipeline to a service. However, this solution will not be the right fit for all developers, as using such pipeline services imposes certain restrictions upon the user:</p>
+      <p>The first category is review apps as a feature of a larger service. For example, products like Heroku Pipelines
+        provide review apps as one part of a full continuous delivery pipeline they call Heroku Flow. For some users,
+        this would be an excellent fit, due to the convenience of delegating all stages of the development pipeline to a
+        service. However, this solution will not be the right fit for all developers, as using such pipeline services
+        imposes certain restrictions upon the user:</p>
       <ul>
-        <li>Users must follow the service's specific pipeline model, offering less flexibility and choice in your development cycle model.</li>
-        <li>These services typically require the user to host their application on the service's infrastructure. In the context of Heroku, it's not just the review applications that are hosted on Heroku's infrastructure - it's also the live production deployment. For data-conscious developers, this trades away access and control of your application's code and infrastructure. </li>
-        <li>Services like this are not an option for organizations that have their own existing deployment solution and simply want to introduce review apps into their development cycle without migrating to an entirely new platform.</li>
-        <li>Not all developers may be willing to spend the higher price involved in purchasing a larger feature package than just review apps. </li>
+        <li>Users must follow the service's specific pipeline model, offering less flexibility and choice in your
+          development cycle model.</li>
+        <li>These services typically require the user to host their application on the service's infrastructure. In the
+          context of Heroku, it's not just the review applications that are hosted on Heroku's infrastructure - it's
+          also the live production deployment. For data-conscious developers, this trades away access and control of
+          your application's code and infrastructure. </li>
+        <li>Services like this are not an option for organizations that have their own existing deployment solution and
+          simply want to introduce review apps into their development cycle without migrating to an entirely new
+          platform.</li>
+        <li>Not all developers may be willing to spend the higher price involved in purchasing a larger feature package
+          than just review apps. </li>
       </ul>
-      <P>GitLab Review Apps offer a solution similar to Heroku's, with the distinction that GitLab is open-source. Otherwise, the tradeoffs are similar, as the user must use GitLab as a code-hosting service in order to take advantage of their review app feature. </P>
-      <P>For developers looking for just a simple review app solution and not a whole development pipeline or code-hosting service, review applications as a feature aren't an ideal solution.</P>
+      <P>GitLab Review Apps offer a solution similar to Heroku's, with the distinction that GitLab is open-source.
+        Otherwise, the tradeoffs are similar, as the user must use GitLab as a code-hosting service in order to take
+        advantage of their review app feature. </P>
+      <P>For developers looking for just a simple review app solution and not a whole development pipeline or
+        code-hosting service, review applications as a feature aren't an ideal solution.</P>
       <h3 id="review-apps-as-a-service">3.2) Review Apps as a Service</h3>
-      <p>The second category is review apps as a service. Services like Tugboat and Reploy offer a proprietary, configurable platform for deploying and managing review apps. These platforms include many useful features beyond simply deploying a review app, such as customized build steps and integrations with other services. However, using a feature-rich review app platform does come with certain limitations: </p>
+      <p>The second category is review apps as a service. Services like Tugboat and Reploy offer a proprietary,
+        configurable platform for deploying and managing review apps. These platforms include many useful features
+        beyond simply deploying a review app, such as customized build steps and integrations with other services.
+        However, using a feature-rich review app platform does come with certain limitations: </p>
       <ol>
-        <li>Providing more features results in more setup and configuration responsibilities on the user. Such platforms require users to learn the platform's system and write service-specific configuration files for all previewed applications.</li>
-        <li>Most of these review app services require the user to host their applications on the service's infrastructure, limiting the user's control over their code and deployments.</li>
-        <li>Services charge users a flat subscription fee, and sometimes an additional fee based on the number of users per account, number of apps deployed, or quantity of resources consumed. Such payment plans are obscure and uncorrelated to the user's actual usage on the platform.</li>
+        <li>Providing more features results in more setup and configuration responsibilities on the user. Such platforms
+          require users to learn the platform's system and write service-specific configuration files for all previewed
+          applications.</li>
+        <li>Most of these review app services require the user to host their applications on the service's
+          infrastructure, limiting the user's control over their code and deployments.</li>
+        <li>Services charge users a flat subscription fee, and sometimes an additional fee based on the number of users
+          per account, number of apps deployed, or quantity of resources consumed. Such payment plans are obscure and
+          uncorrelated to the user's actual usage on the platform.</li>
       </ol>
-      <p>For developers looking for an easily configurable solution where they can maintain control and pay as they go, review apps as a service is not really a good fit.</p>
+      <p>For developers looking for an easily configurable solution where they can maintain control and pay as they go,
+        review apps as a service is not really a good fit.</p>
       <p>The following table summarizes the attributes of these two types of review app solutions:</p>
       <div class="img-wrapper">
         <img src="images/diagrams/ES_table1.png" alt="review apps as a feature vs review apps as a service" />
       </div>
-      <p>In spite of the generous feature sets offered by these solutions, they won't be the best fit for all development teams. If a team wants to deploy review apps without much change to their CI/CD pipeline, they won't be able to do that with a solution like Heroku's, because they impose their own pipeline model. If they want to be able to control the infrastructure their review apps are hosted on, due to security or compliance, they won't find a solution there either. Additionally, if they want a pay-as-you-go model instead of a monthly fee, these solutions are not the correct fit.</p>
-      
+      <p>In spite of the generous feature sets offered by these solutions, they won't be the best fit for all
+        development teams. If a team wants to deploy review apps without much change to their CI/CD pipeline, they won't
+        be able to do that with a solution like Heroku's, because they impose their own pipeline model. If they want to
+        be able to control the infrastructure their review apps are hosted on, due to security or compliance, they won't
+        find a solution there either. Additionally, if they want a pay-as-you-go model instead of a monthly fee, these
+        solutions are not the correct fit.</p>
+
       <h3 id="diy-solution">3.3) DIY Solution</h3>
-      <p>For developers looking for a solution that keeps their code within their own network and whose only costs are those with their cloud provider, one option is to build your own in-house automated review app solution. However, building such a solution requires quite a few steps.</p>
-      <p>Starting with a smaller problem, we can examine the number of steps required to deploy just one application. This results in a list of at least 13 individual steps. </p>
+      <p>For developers looking for a solution that keeps their code within their own network and whose only costs are
+        those with their cloud provider, one option is to build your own in-house automated review app solution.
+        However, building such a solution requires quite a few steps.</p>
+      <p>Starting with a smaller problem, we can examine the number of steps required to deploy just one application.
+        This results in a list of at least 13 individual steps. </p>
       <div class="img-wrapper">
         <img src="images/diagrams/diy_steps.png" alt="Steps to launch a review app" />
       </div>
       <p>To reach a complete review app solution, we still have quite a few considerations to make:</p>
       <ul>
-        <li>If we want to host more than one review app at a time, do we want to repeat the steps above every time or do we want to design a long-lived infrastructure to host the apps? Will our resource utilization even be worth maintaining a long-lived infrastructure?</li>
-        <li>How can we create a solution that can support multiple types of applications, each with a different set of dependencies? </li>
+        <li>If we want to host more than one review app at a time, do we want to repeat the steps above every time or do
+          we want to design a long-lived infrastructure to host the apps? Will our resource utilization even be worth
+          maintaining a long-lived infrastructure?</li>
+        <li>How can we create a solution that can support multiple types of applications, each with a different set of
+          dependencies? </li>
         <li>How can we isolate and persist each review app's data for the time the review app is alive? </li>
         <li>How can we automatically deploy these review apps?</li>
       </ul>
-      <p>With these considerations above, we ideally want to have some easy way to provision long-lived infrastructure when we want to create review apps frequently, and an easy way to tear down the infrastructure when we reach a development lull. We'd also want to find a way to isolate review apps and their databases from one another, whether it be deploying each app on a different server or containerizing applications. In addition, we would need to provision and configure some kind of storage method for each review app and create some method to automate all these processes. </p>
+      <p>With these considerations above, we ideally want to have some easy way to provision long-lived infrastructure
+        when we want to create review apps frequently, and an easy way to tear down the infrastructure when we reach a
+        development lull. We'd also want to find a way to isolate review apps and their databases from one another,
+        whether it be deploying each app on a different server or containerizing applications. In addition, we would
+        need to provision and configure some kind of storage method for each review app and create some method to
+        automate all these processes. </p>
       <div class="img-wrapper">
         <img src="images/diagrams/ES_table2.png" alt="Table with DIY option added" />
       </div>
-      <p>This DIY approach fulfills the goals of keeping code within your own network and keeping costs transparent. However, creating such a DIY solution is a large undertaking. For organizations that still want this type of solution, it would be ideal to have a customizable open-source option that provided these same benefits without the time and development costs of creating it from scratch. This is why we built Gander.</p>
+      <p>This DIY approach fulfills the goals of keeping code within your own network and keeping costs transparent.
+        However, creating such a DIY solution is a large undertaking. For organizations that still want this type of
+        solution, it would be ideal to have a customizable open-source option that provided these same benefits without
+        the time and development costs of creating it from scratch. This is why we built Gander.</p>
       <div style="display:none;">
         <p>DiD yOu LiSt ThIs As ExPeRiEnCe?!?!?</p>
         <div class="img-wrapper">
@@ -335,21 +415,36 @@
       </div>
       <p>Gander fills its niche by achieving the design goals we established earlier.</p>
       <ul>
-        <li><strong>Convenience — </strong> Gander is easy to set up. It avoids all the hassle of developing your own internal tooling that is required with the DIY approach, as well as the configuration required when using review apps as a service. Gander provides the convenience factor of automating every build, deploy and tear down, and anyone can get Gander up and running in as little as 10 minutes. </li>
-        <li><strong>Versatility — </strong>Services like Heroku Pipelines support many more types of application architectures and are a great option when managed hosting is sufficient for your organization's needs. Gander, on the other hand, is workflow agnostic. It's a no commitment, drop-in solution, where users are not locked in to any specific development process. Gander can be integrated at any stage in the life of an application. </li>
-        <li><strong>Cost-Efficiency — </strong> We designed Gander to adhere to the "pay-as-you-go" model of cloud computing, so that you only pay for the compute you use. Because review apps are both temporary and typically fielding very light traffic, the cost of using Gander scales up or down depending on your exact needs.</li>
-        <li><strong>Control — </strong> Gander's open-source code and review apps run in the user's GitHub and AWS accounts. The user maintains control over their code and expenses and won't need to trust a review app provider with their data or secrets. </li>
+        <li><strong>Convenience — </strong> Gander is easy to set up. It avoids all the hassle of developing your own
+          internal tooling that is required with the DIY approach, as well as the configuration required when using
+          review apps as a service. Gander provides the convenience factor of automating every build, deploy and tear
+          down, and anyone can get Gander up and running in as little as 10 minutes. </li>
+        <li><strong>Versatility — </strong>Services like Heroku Pipelines support many more types of application
+          architectures and are a great option when managed hosting is sufficient for your organization's needs. Gander,
+          on the other hand, is workflow agnostic. It's a no commitment, drop-in solution, where users are not locked in
+          to any specific development process. Gander can be integrated at any stage in the life of an application.
+        </li>
+        <li><strong>Cost-Efficiency — </strong> We designed Gander to adhere to the "pay-as-you-go" model of cloud
+          computing, so that you only pay for the compute you use. Because review apps are both temporary and typically
+          fielding very light traffic, the cost of using Gander scales up or down depending on your exact needs.</li>
+        <li><strong>Control — </strong> Gander's open-source code and review apps run in the user's GitHub and AWS
+          accounts. The user maintains control over their code and expenses and won't need to trust a review app
+          provider with their data or secrets. </li>
       </ul>
-      <p>In the remaining sections, we discuss the decisions we made in order to architect a system that meets these goals.</p>
-  
+      <p>In the remaining sections, we discuss the decisions we made in order to architect a system that meets these
+        goals.</p>
+
       <h2 id="architecture-overview">4) Architecture Overview</h2>
-      <p>Gander uses AWS infrastructure combined with GitHub Actions to build and host review apps. We're going to do a quick overview of this architecture, and then revisit each piece to explore the design decisions that went into it.</p>
-      
+      <p>Gander uses AWS infrastructure combined with GitHub Actions to build and host review apps. We're going to do a
+        quick overview of this architecture, and then revisit each piece to explore the design decisions that went into
+        it.</p>
+
       <div class="img-wrapper">
         <img src="images/diagrams/gander_overview.png" alt="Overview of Gander Architecture" />
       </div>
       <h3 id="github-actions">4.1) Github Actions</h3>
-      <p>To build and remove your review apps, we leverage GitHub Actions, a workflow automation tool available from GitHub. In Gander's case, our workflows: </p>
+      <p>To build and remove your review apps, we leverage GitHub Actions, a workflow automation tool available from
+        GitHub. In Gander's case, our workflows: </p>
       <ul>
         <li>containerize and deploy your application to AWS upon opening or committing to a pull request, and</li>
         <li>tear down the application upon closing a pull request.</li>
@@ -357,14 +452,26 @@
       <h3 id="amazon-web-services">4.2) Amazon Web Services</h3>
       <p>AWS provides all of the infrastructure required to effortlessly host, manage and view your review apps. </p>
       <ul>
-        <li><strong>Elastic Container Service: </strong> To ensure that all live review apps are always up and running, the containerized applications are deployed to and managed automatically by Elastic Container Service. </li>
-        <li><strong>Elastic File System:</strong> As containers, and therefore their data, are ephemeral, we persist your review app data outside of the application itself with Elastic File System. </li>
-        <li><strong>Application Load Balancer:</strong> To easily reach a review app based on its semantic URL, we use an Application Load Balancer to route traffic to the correct app.</li>
-        <li><strong>AWS Virtual Private Cloud:</strong> To separate your Gander architecture and review apps from other resources in your AWS account, we deploy to a dedicated Virtual Private Cloud.</li>
+        <li><strong>Elastic Container Service: </strong> To ensure that all live review apps are always up and running,
+          the containerized applications are deployed to and managed automatically by Elastic Container Service. </li>
+        <li><strong>Elastic File System:</strong> As containers, and therefore their data, are ephemeral, we persist
+          your review app data outside of the application itself with Elastic File System. </li>
+        <li><strong>Application Load Balancer:</strong> To easily reach a review app based on its semantic URL, we use
+          an Application Load Balancer to route traffic to the correct app.</li>
+        <li><strong>AWS Virtual Private Cloud:</strong> To separate your Gander architecture and review apps from other
+          resources in your AWS account, we deploy to a dedicated Virtual Private Cloud.</li>
       </ul>
       <h3 id="command-line-interface">4.3) Command Line Interface</h3>
-      <p>Gander provides a CLI so users can set up and tear down Gander infrastructure, and initialize repositories with Gander.</p>
+      <p>Gander provides a CLI so users can set up and tear down Gander infrastructure, and initialize repositories with
+        Gander.</p>
       <h2 id="responding-to-pull-requests">5) Responding to Pull Requests</h2>
+      <p>
+        We'll begin our exploration of Gander's architecture with a look at how we leverage GitHub and GitHub Actions to
+        respond to pull requests.
+      </p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander_focus_github.png" alt="Gander Architecture Focusing on GitHub" />
+      </div>
       <h3 id="why-pull-requests">5.1) Why Pull Requests</h3>
       <p>Before building and deploying review apps, we first have to decide the boundaries for this process: </p>
       <ul>
@@ -372,34 +479,67 @@
         <li>When should a build be updated? </li>
         <li>When should an app be torn down?</li>
       </ul>
-      <p>Given our goal of enabling relevant stakeholders to review new features earlier in development, pull requests are a perfect trigger for deploying review apps. Pull requests are a mechanism by which developers notify other team members that they have a completed feature ready for review. The feature is then reviewed and approved before being merged into a more stable branch of the codebase [5].   </p>
+      <p>Given our goal of enabling relevant stakeholders to review new features earlier in development, pull requests
+        are a perfect trigger for deploying review apps. Pull requests are a mechanism by which developers notify other
+        team members that they have a completed feature ready for review. The feature is then reviewed and approved
+        before being merged into a more stable branch of the codebase [5]. </p>
       <p>A typical lifecycle of a pull request looks something like this:</p>
       <div class="img-wrapper">
         <img src="images/diagrams/pull_request_lifecycle.png" alt="Pull Request Flow Chart" />
       </div>
-      <p>Since the purpose of Gander review apps is to enable team members to preview changes in a live deployment before merging, we want to run builds not only upon the opening of a pull request, but also when a new commit is made to the source branch of an existing pull request. This event is called synchronizing. As for tearing down a review app, the natural event to respond to is the closing of a pull request.</p>
+      <p>Since the purpose of Gander review apps is to enable team members to preview changes in a live deployment
+        before merging, we want to run builds not only upon the opening of a pull request, but also when a new commit is
+        made to the source branch of an existing pull request. This event is called synchronizing. As for tearing down a
+        review app, the natural event to respond to is the closing of a pull request.</p>
       <p>After establishing the three events Gander review apps react to, we now need to consider: </p>
       <ul>
         <li>How do we connect the build and tear-down processes with these pull request events?</li>
         <li>Where should these processes take place?</li>
       </ul>
       <h3 id="webhooks">5.2) Webhooks</h3>
-      <p>Webhooks are a way for applications to send automatic notifications to other applications whenever a certain event occurs. These notifications usually take the form of a POST request containing a payload with any relevant metadata about the event [6]. GitHub enables webhook integrations that can send these POST requests to whatever endpoint the user specifies.</p>
+      <p>Webhooks are a way for applications to send automatic notifications to other applications whenever a certain
+        event occurs. These notifications usually take the form of a POST request containing a payload with any relevant
+        metadata about the event [6]. GitHub enables webhook integrations that can send these POST requests to whatever
+        endpoint the user specifies.</p>
       <div class="img-wrapper">
-        <img src="images/diagrams/webhooks.png" alt="Webhook Diagram" />
+        <img src="images/diagrams/webhooks.png" alt="Webhook Diagram" style="max-width:600px" />
       </div>
-      <p>One way that we could have achieved our goal of a pull request trigger is by setting up a server whose purpose is to listen for a webhook event notifying that a pull request was opened, synchronized, or closed and to take action accordingly. To build a review app, this server would need to clone the relevant code from GitHub before it could do anything else. Doing it this way would allow more fine-grained control over the build environment — how the server itself is configured — but there are drawbacks to this approach.  </p>
-      <p>First, this server would need to be online all of the time in order to listen for incoming webhook events. Outside of the time the server is actually building or tearing down a review app, it would be sitting idle. Considering that more time than not would be spent in this idle listening state, this is not resource-efficient or cost-effective.</p>
-      <p>Second, since this server would live outside the boundaries of GitHub, there would be an additional authentication step required before it is allowed to interact with the repository in any meaningful way. Then, any other metadata the server needs about the repository in order to carry out its work would require additional requests over the network to GitHub's API.</p>
+      <p>One way that we could have achieved our goal of a pull request trigger is by setting up a server whose purpose
+        is to listen for a webhook event notifying that a pull request was opened, synchronized, or closed and to take
+        action accordingly. To build a review app, this server would need to clone the relevant code from GitHub before
+        it could do anything else. Doing it this way would allow more fine-grained control over the build environment —
+        how the server itself is configured — but there are drawbacks to this approach. </p>
+      <p>First, this server would need to be online all of the time in order to listen for incoming webhook events.
+        Outside of the time the server is actually building or tearing down a review app, it would be sitting idle.
+        Considering that more time than not would be spent in this idle listening state, this is not resource-efficient
+        or cost-effective.</p>
+      <p>Second, since this server would live outside the boundaries of GitHub, there would be an additional
+        authentication step required before it is allowed to interact with the repository in any meaningful way. Then,
+        any other metadata the server needs about the repository in order to carry out its work would require additional
+        requests over the network to GitHub's API.</p>
 
       <h3 id="github-actions">5.3) Github Actions</h3>
-      <p>Thankfully, there is an alternative to webhooks that better suits our use-case — GitHub Actions. GitHub Actions is a workflow automation tool that executes on their servers, eliminating the need for our users to provision, maintain, and configure an entirely separate build server. Running our workflows on GitHub's servers through Actions also means that our users are not incurring any costs or consuming any compute resources when there is no build or tear-down to be run. GitHub Actions has a free tier available that contains 2000 minutes of compute per account per month, which can support between 200-300 pull requests per month depending on the size of your project. </p>
+      <p>Thankfully, there is an alternative to webhooks that better suits our use-case — GitHub Actions. GitHub Actions
+        is a workflow automation tool that executes on their servers, eliminating the need for our users to provision,
+        maintain, and configure an entirely separate build server. Running our workflows on GitHub's servers through
+        Actions also means that our users are not incurring any costs or consuming any compute resources when there is
+        no build or tear-down to be run. GitHub Actions has a free tier available that contains 2000 minutes of compute
+        per account per month, which can support between 200-300 pull requests per month depending on the size of your
+        project. </p>
       <div class="img-wrapper">
-        <img src="images/diagrams/workflows.png" alt="GitHub Actions Diagram" />
+        <img src="images/diagrams/workflows.png" alt="GitHub Actions Diagram" style="max-width:500px" />
       </div>
-      <p>Additionally, GitHub Actions allows us to run these workflows within the existing context of the users' repositories, eliminating the need to authenticate with the GitHub API. We can easily access information such as the pull request number and secrets within the repository. With a separate build server, accessing this information is still possible but would require additional network requests to the GitHub API. With GitHub Actions, we can access this information natively through the API built into the servers GitHub provides. Ultimately, because of the reduced costs and the convenience of executing code in the context of the repository, this is the clear choice for Gander, particularly since one of our major design goals was keeping expenses transparent and grounded in resource-use.</p>
+      <p>Additionally, GitHub Actions allows us to run these workflows within the existing context of the users'
+        repositories, eliminating the need to authenticate with the GitHub API. We can easily access information such as
+        the pull request number and secrets within the repository. With a separate build server, accessing this
+        information is still possible but would require additional network requests to the GitHub API. With GitHub
+        Actions, we can access this information natively through the API built into the servers GitHub provides.
+        Ultimately, because of the reduced costs and the convenience of executing code in the context of the repository,
+        this is the clear choice for Gander, particularly since one of our major design goals was keeping expenses
+        transparent and grounded in resource-use.</p>
       <h3 id="workflows-within-gander">5.4) Workflows within Gander</h3>
-      <p>There are three workflows that we inject into a project — "Create review app", "Destroy review app", and "Update review app". Here is a brief summary of what each of those actions do:</p>
+      <p>There are three workflows that we inject into a project — "Create review app", "Destroy review app", and
+        "Update review app". Here is a brief summary of what each of those actions do:</p>
       <p>Create Review App</p>
       <ol>
         <li>Build the application image</li>
@@ -422,21 +562,444 @@
       <p>Our Update workflow simply destroys a review app, then creates a new one with the updated code. </p>
       <p>In the following sections, we'll cover what each of these steps involves in detail.</p>
       <h2 id="building-applications">6) Building Applications</h2>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander_focus_publish.png" alt="Gander Architecture" />
+      </div>
+      <p>As users of Gander would want to deploy more than one review app, we need to find a way to host multiple review
+        apps efficiently while keeping the apps and their data isolated from one another. But first we will take a look
+        at the naive solution and what problems arise in taking this approach. </p>
+      <h3 id="tenancy">6.1) Tenancy</h3>
+      <p>Recall that Gander only supports review apps for monolithic applications. These applications must have exactly
+        two processes: an application and a database. The naive solution to hosting these applications is to provision a
+        server and simply drop the application code and its database onto that server. This is called single tenancy.
+      </p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/single-tenancy.png" alt="Single Tenancy" />
+      </div>
+      <p>When it comes time to serve the review apps, we will want the capability to serve many review apps at one time.
+        For example, we might need to serve a todo project's review app and a chat project's review app. And there might
+        be simultaneous pull requests on the same project as well, such as a header feature and a sidebar feature for
+        the todo project.</p>
+      <p>Dropping each review app onto its own server quickly becomes inefficient, resulting in poor resource
+        utilization. As we would have multiple servers each running one app, most of the processing power, memory, and
+        storage on the servers will go unused. A more resource-efficient alternative to single-tenancy is multi-tenancy
+        — running multiple applications on the same server. But this creates a new problem: dependency conflicts.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/shared_host.png" alt="Shared Hosts bring dependency conflicts"
+          style="max-width:500px" />
+      </div>
+      <p>For example, if todo-app-1 depends on library 1.0.0, while chat-app-1 depends on library 2.0.0, one project's
+        version of the dependency will overwrite the other. To keep the two versions of library separate, we would have
+        to use a custom naming system or directory structure. With multiple apps and multiple dependencies, that type of
+        work will grow in complexity as the number of conflicts grows.</p>
+      <p>Multi-tenancy creates security challenges as well. Apps on the same server would have the potential to access
+        the file systems and memory space of other apps, and we want to avoid such security risks.</p>
+      <h3 id="virtual-machines">6.2) Virtual Machines</h3>
+      <p>One method of isolating applications is to run them inside virtual machines. A virtual machine (VM) is
+        essentially an entire computer running on software. It has its own operating system, and thinks of itself as a
+        physical computer with its own CPU, memory, hard disk, and network card. The advantage of using virtual machines
+        is that a host computer can run multiple virtual machines at the same time. Because of this, we can isolate
+        dependencies between applications by having each application installed on its own virtual machine, and run many
+        virtual machines on a single server to achieve multi-tenancy.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/virtual_machine.png" alt="Virtual Machines Isolate Systems" style="max-width:500px" />
+      </div>
+      <p>Because each VM thinks of itself as a physical computer, the server hosting these virtual machines uses a
+        hypervisor to manage access to hardware. This is to avoid hardware access conflicts. Virtual machines are not
+        without their problems, however. Because they run an entire operating system, including the kernel, drivers, and
+        more, they use a lot of resources.</p>
+
+      <h3 id="containers">6.3) Containers</h3>
+      <p>Containers, on the other hand, are lightweight. They still contain everything a software application needs to
+        run, including the source code, dependencies, OS packages, language runtimes, environment variables, and so on.
+        Unlike virtual machines, though, containers do not need to have their own operating system. Instead, they share
+        the host operating system's kernel. Access to the kernel is regulated by the container daemon, which is
+        responsible for managing containers on the server. Even though containers share the host operating system, they
+        still view themselves as a complete, isolated system with their own filesystem, networking capabilities, and so
+        on. </p>
+      <p>Because they don't have to run a complete operating system, they use significantly less resources, and are far
+        more portable than virtual machines. This is the reason that we chose to use containers for Gander —
+        containerizing allows us to have highly portable, isolated review apps.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/containers.png" alt="Containers isolate applications" style="max-width:500px" />
+      </div>
+      <p>Containers also give us the ability to implement multi-tenancy with projects that use a variety of languages
+        and frameworks. Our architecture for managing review apps will interact with the apps at the container level,
+        and will not need to know about what languages or frameworks are used inside the apps themselves. Each review
+        app container will look the same as all of the others from outside of the container.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/containers-rock.png" alt="Containers allow many supported languages" />
+      </div>
+      <p>We run our databases in containers as well, which provides several benefits.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/containers-multi-tenant.png" alt="Containers allow for Multi Tenancy"
+          style="max-width:500px" />
+      </div>
+      <p>With containerized databases, we avoid the need to deal with any potential conflicts between databases running
+        on the same machine, such as port conflicts or naming conflicts. If one database fails, the other review app
+        won't be affected. So each of our review apps runs in two containers: one container for the application source
+        code, and one container for the database.</p>
+      <p>Before a container can be brought to life, we must build an image. An image is a static, read-only template
+        with instructions for creating a container [*], while a container is an ephemeral process that runs from an
+        image. Similar to how a class contains the blueprint for instantiating any number of objects of its type, an
+        image contains the blueprint for running any number of containers based on its instructions. A built image is
+        stored in a registry, and it will be pulled from that registry when it is time to run a container based on that
+        image.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/image-to-container.png" alt="Images become Containers" style="max-width:500px" />
+      </div>
+      <p>We can pull an image for our database container from a registry of pre-built database images because nothing
+        about the database itself will be application-specific. The application image, though, is something we will need
+        to build ourselves. Each application image will contain its unique application source code, application
+        dependencies, environment variables, language runtime, language-level dependencies, and so on. Both the code and
+        all associated dependencies will be completely different for every project. </p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/Postgres_Image.png" alt="Postgres Image from Public Registry" />
+      </div>
+      <p>So how can we build this customized application image? To containerize such an application, we need to detect
+        the language and framework the application code uses, install all the relevant dependencies, know how to start
+        up the application, and collect the relevant environment variables. As one of our goals is to minimize the
+        amount of setup and configuration required from Gander's user, we need an easy way to automate this
+        application-specific configuration.</p>
+      <p>There are three ways we could choose to build our application container images. </p>
+      <p>Docker is the industry-standard tool used for containerizing applications and uses Dockerfiles to define the
+        images. One option for containerization would be to have the user provide a Dockerfile. The main advantage of
+        this option would be the ability to support any framework that the user might need, as long as the user can
+        write a Dockerfile that will containerize their application. However, one of Gander's design goals is
+        convenience for the end-user. To direct our design towards this goal, we would prefer not to require expertise
+        with Docker and containers on the part of the user.</p>
+      <p>We considered a second option, where Gander would generate a Dockerfile for the user. This would improve
+        Gander's ease-of-use and would help us reach our design goal. However, this choice would limit the types of
+        frameworks we could support because we would need to write Dockerfile-generating code for every supported
+        framework, one by one. Our list of supported frameworks would be restricted by the time we had available to
+        write and debug framework-specific containerizing code.</p>
+      <h3 id="cloud-native-buildpacks">6.4) Cloud Native Buildpacks</h3>
+      <p>The third option is Cloud Native Buildpacks [7], a project by the Cloud Native Computing Foundation (CNCF). The
+        CNCF is an organization dedicated to open-source projects that "empower organizations to build and run scalable
+        applications in modern, dynamic environments such as public, private, and hybrid clouds" [8]. Many CNCF
+        projects, such as Kubernetes, are container technologies. </p>
+      <p>Cloud Native Buildpacks is a container tool that transforms source code into a runnable container image using a
+        three-stage process of detection, building, and exporting. The container images exported by Buildpacks are Open
+        Container Initiative (OCI) compliant, meaning that they can be run by any container tool that uses the
+        industry-standard OCI image specifications. AWS has no problem running these containers because it uses Docker,
+        which is OCI-compliant.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/cnb.png" alt="Detect, Build, then Export" />
+      </div>
+      <p>Buildpacks are a powerful tool that can containerize a project without requiring the user to write any
+        configuration files. How is this possible? First, the user must select a specific "builder" to apply to a
+        project. [9] The builder then detects the project's language and selects from its arsenal of buildpacks as
+        needed to execute the image build appropriately for that specific project. The buildpacks build the code into
+        runnable artifacts, and those artifacts are transformed into a container image that is exported and made
+        available for running a container.</p>
+      <p>Gander does the work of selecting the builder on behalf of the user, based on Cloud Native recommendations.
+        These builders all support multiple languages, but we do ask the Gander user to indicate their project's
+        language, to make sure that we choose the best builder possible. We use the Google Cloud Builder[10] for Python
+        apps; the Paketo Base builder for apps written in Node.js, Golang, Java, or .NET; and the Paketo Full builder
+        for apps written in Ruby or PHP.[11] Users can also write a Procfile with their app configuration information if
+        they wish to be explicit and bypass the auto-detect functionality, in which case we use the Paketo Base builder.
+      </p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/cnb_table.png" alt="Cloud Native Buildpacks -- Best of Both Worlds" />
+      </div>
+      <p>Buildpacks give us the best of both worlds: simplicity for the user alongside support for multiple frameworks.
+        So far we've successfully run review apps for projects written with Go, Node, Django, and Ruby. Buildpacks can
+        also support .NET, PHP, and Java, and we plan to test these languages as well in future work.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander-languages-supported.png" alt="Gander Languages Supported" />
+      </div>
+      <p>Choosing to use Buildpacks was a straightforward decision and a win-win situation. Since Buildpacks have the
+        power to containerize applications written in a wide variety of languages and frameworks using auto-detection,
+        Gander does not need to automate containerization for many types of projects one at a time or require the user
+        to write configuration files. The end result is that, as long as the user's project can be containerized with
+        Cloud Native Buildpacks, then Gander can generate a review app for the project.</p>
+
       <h2 id="managing-running-applications">7) Managing Running Applications</h2>
+      <p>We've seen how GitHub Actions use container and Buildpacks technologies to build review apps. Now let's
+        transition away from GitHub and begin looking at what happens when our Actions deploy review apps to the AWS
+        component of Gander's architecture.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander_focus_ecs.png" alt="Gander uses Elastic Container Service" />
+      </div>
+      <h3 id="container-orchestration">7.1) Container Orchestration</h3>
+      <p>To serve several review apps we will need a way to manage the containers that our review apps run — two
+        containers for each application. Managing these containers includes deciding which containers go on which
+        servers and distributing the containers as efficiently as possible. We'll have to think about scaling up
+        additional servers when needed as well.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/orchestration-placement.png" alt="Where do we put these containers?"
+          style="max-width:500px" />
+      </div>
+      <p>We also want to keep our application available if a container fails, so our container management will need to
+        include restarting on failure. If a container fails, we want to run another container from the same image in its
+        place. A server might fail too, in which case its containers will also fail. Fixing this situation will require
+        restarting a new server, and then running replacement containers on it.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/orchestration-failures.png" alt="How do we cope with container failures?"
+          style="max-width:500px" />
+      </div>
+      <p>We also need our containers to communicate with each other. The application API container and its database must
+        be networked together into a group to form a review app. That container group has to know what order to start up
+        containers in and how the containers relate to one another. Routing to these container groups also needs to be
+        maintained even as individual containers fail, restart, and receive new IP addresses in the process.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/orchestration-intranet.png" alt="Containers need to talk to each other"
+          style="max-width:500px" />
+      </div>
+      <p>All of these container management operations are normally grouped under the concept of "container
+        orchestration". And so we needed to decide how Gander would handle container orchestration.</p>
+      <h3 id="self-managed-vs-externally-managed">7.2) Self Managed vs Externally Managed</h3>
+      <p>One option would be to manage container orchestration ourselves. Doing our own container orchestration would
+        give us granular control over all aspects of it, including the opportunity to determine exactly how scaling and
+        routing are set up and managed. Kubernetes and Docker Swarm are two popular solutions for container
+        orchestration. Although these systems are highly configurable, they are very difficult to configure and manage.
+      </p>
+      <p>Externally managed container orchestration, on the other hand, turns over the implementation details of
+        orchestration to a service. Scaling and fault detection happen automatically. There are fewer options for
+        configuration, but the benefit comes in the form of ease of use.</p>
+      <p>We decided to let Amazon ECS handle container orchestration for Gander review apps. Granular control over
+        container orchestration is overkill for an application like Gander. Each review app only needs to manage two
+        containers, and we won't ever be running enough containers to see any benefit from customized orchestration. We
+        already knew we wanted to use AWS for our infrastructure, so this decision made a lot of sense for us.</p>
+      <p>ECS provides a convenient way to group our containers into review apps using tasks. Gander structures each
+        review app into a task that specifies exactly two container images: one for the application and one for the
+        database. These tasks are the fundamental unit that ECS manages. In practice, this means that ECS will make
+        certain decisions on our behalf. It may decide to replicate certain containers within a task if it is receiving
+        heavy load or restart a container whose CPU is overloaded. From outside of the ECS abstraction, all we care
+        about now is that the task we defined is up and available. Ultimately, this extra layer of abstraction means we
+        don't have to worry at all about actually managing the containers within a review app — ECS will handle all of
+        that for us.</p>
+      <div class="img-wrapper">
+        <p class="caption">A Gander Review App on Amazon ECS</p>
+        <img src="images/diagrams/what-is-a-task.png" alt="A Task consists of an API and a Database"
+          style="max-width:500px" />
+      </div>
+      <p>Defining our review apps as tasks allows us to deploy our containers as fully-formed review apps rather than as
+        individual containers. The task definitions that we provide to ECS list the required container images and
+        prescribe other constraints. These constraints include how much CPU and memory to use for each task, the startup
+        command for each container, and so on.</p>
+      <h3 id="amazon-ecs-and-its-launch-types">Amazon ECS and its launch types</h3>
+      <p>With Amazon ECS handling container orchestration, containers and tasks will be managed efficiently and
+        automatically. The next decision we had to make was whether or not to let Amazon ECS manage not just the
+        containers, but the servers they live on as well.</p>
+      <p>Amazon ECS uses the term "launch type" to reference the type of server infrastructure that the user chooses for
+        running their tasks. The first launch type, Amazon EC2 (Elastic Compute Cloud), allows the user some degree of
+        control over the servers. The second option, AWS Fargate, abstracts away the servers completely.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/ec2-vs-fargate.png" alt="EC2 vs Fargate" />
+      </div>
+      <h4>7.3.1) Amazon EC2</h4>
+      <p>Using Amazon EC2 would give us control over the size and processing power of our servers, and access to their
+        file systems. But we would also be responsible for keeping most of our servers' processing power and memory in
+        use or end up wasting them. If our tasks leave servers mostly idle, we would be responsible for that.</p>
+      <h4>7.3.2) AWS Fargate</h4>
+      <p>AWS Fargate handles servers entirely on our behalf. The downside of that is that we have no choice in what type
+        of servers host our applications, and no access to their files. But the advantage is that Amazon bears the
+        responsibility for using servers efficiently and keeping them running near maximum capacity. </p>
+      <p>We chose to use Fargate rather than EC2 because Gander will only run a relatively small number of containers at
+        any given time. It would be very difficult for us to occupy servers efficiently with a handful of ephemeral and
+        isolated applications. </p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/ec2-reservation-rate.png" alt="EC2 Reservation Rate" />
+      </div>
+      <p>Variable workloads and uncertainty are problems for keeping servers running efficiently and near capacity, and
+        Gander has both. After a review app is generated on a pull request, the app is spun up, but it might sit idle
+        until much later when the reviewer has time in her schedule to access it. Even then, the workload required by
+        the review app might be tiny. We are, furthermore, uncertain how many review apps will be running at any given
+        time, and we don't know how many resources each review app will need. All of this makes a serverless option like
+        Fargate a more cost-effective choice for our users, which is an important priority for us.</p>
+      <p>Of course, the tradeoff of using Fargate's serverless orchestration is that we are not able to access the host
+        machines where our review apps live. We were able to compensate for this by using an external file system, as we
+        explain in the next section.</p>
+
       <h2 id="persisting-data">8) Persisting Data</h2>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander_focus_efs.png" alt="Gander Focus EFS" />
+      </div>
+      <p>Now that we have a system in place that can build and manage multiple review apps, we need to address how they
+        will persist their data. There are two parts to this — how do we store data when containers are involved, and
+        where do we put it?</p>
+
       <h3 id="container-filesystems">8.1) Container Filesystems</h3>
+      <div class="img-wrapper" id="lost-data">
+        <p></p>
+        <img style="max-width:600px" />
+      </div>
+      <p>Since containers view themselves as complete operating systems, they have their own file systems. However, this
+        file system is tied to the lifecycle of the container. So if the container were to restart due to a network
+        fault, server failure, or application error, the data stored within would be irrecoverably lost. </p>
+      <p>In the case of review apps, failing to persist their data could lead to wasting organization time and
+        resources. Imagine a QA tester testing a user sign-up workflow in which they create an account and fill out
+        their profile. If there were a fault that caused the containerized review app to restart, the data they entered
+        would be lost, and they would need to restart the sign-up flow. So for review apps, we'll need somewhere beyond
+        the container filesystem to persist data.</p>
+
+
       <h3 id="volumes">8.2) Volumes</h3>
+      <div class="img-wrapper">
+        <img src="images/diagrams/volumes-on-vm.png" alt="Volumes on a Virtual Machine" style="max-width:800px" />
+      </div>
+      <p>The typical way to persist containers' data is to connect containers to volumes. Volumes act as a symbolic link
+        between a directory on the container's internal file system and the host machine's file-system. Using volumes,
+        we can provide a place outside of the container for the database to write its data. Therefore, if the container
+        restarts, the host machine's file system would persist the containerized database's data. </p>
+      <p>However, as we discussed earlier, we do not have access to the file system of the host machine when we use AWS
+        Fargate to run our containers. This presents a problem, as we are not able to create the volumes we need in
+        order to persist data.</p>
+
       <h3 id="elastic-file-system">8.3) Elastic File System</h3>
+
+      <div class="img-wrapper" id="preserve-data">
+        <p></p>
+        <img style="max-width:600px" />
+      </div>
+      <p>Amazon's Elastic File System is a simple solution for this problem. EFS is a managed file system service that
+        is available over the network. It scales automatically and is fault tolerant within a region. It still behaves
+        like a local filesystem, but instead of existing on the same server as the container, it's accessed over the
+        network. This allows us to create volumes much in the same way as using the local file system of the hosting
+        server. By using EFS, we are able to store the PostgreSQL data in a robust way, ensuring the review apps have a
+        stable and available form of data persistence.</p>
+
       <h2 id="seeding-the-database">9) Seeding the Database</h2>
+      <p>Now that we know where to persist the data for our database-backed review apps, we have to address another
+        problem — these databases need to be initialized in order to be used.</p>
+
       <h3 id="initializing-the-postgres-image">9.1) Initializing the Postgres Image</h3>
+      <p>When we start a Postgres container, it starts up as a completely bare database. There is no defined schema. If
+        the Postgres data directory within the container is empty, it will look for an initialization script which will
+        define the schema the database will use, and also any seed data the developer wants to include. In order to seed
+        the database with the user-provided schema and seed data, then, we had to figure out a way to place the
+        initialization script in a location accessible to the Postgres container.</p>
+      <p>In our case, this presents a problem. In order for the Postgres container to have access to this initialization
+        script, it either needs to be inside the image when we start the container, or in a place that we can access,
+        such as Elastic File System. In the next two sections, we'll cover each of these ideas and the trade-offs
+        associated with them. </p>
+
       <h3 id="extend-the-default-postgres-image">9.2) Extend the Default Postgres Image</h3>
+      <p>Our first thought was to extend the public Postgres container image so that it has our initialization script
+        already inside. This can be done easily, by writing a Docker file that copies the initialization script into the
+        database's entry point directory, and then we can use that custom Postgres image instead of the default Postgres
+        image. We would have to upload this container image to the same registry as our application server. When we run
+        this custom Postgres container, it would then be able to initialize the schema and data so that the application
+        can use it. Such an image would have roughly the same size as the Postgres image, which is about 315MB.</p>
+
+      <div class="img-wrapper">
+        <p></p>
+        <img src="images/diagrams/Seed_Database-1.png" style="max-width:600px" />
+      </div>
       <h3 id="custom-linux-image">9.3) Custom Linux Image</h3>
+      <p>Another potential solution is to run a separate task before starting the review app. We can create this by
+        making a container image based on a lightweight Linux image, with the initialization script copied inside. This
+        container's sole job would be to copy the initialization script into a directory on the Elastic File System for
+        the database to access. This way, when the database is started, it can access the initialization script because
+        it is present on the Elastic File System. The total container size of this solution is about 5MB.</p>
+      <div class="img-wrapper" id="seed-efs">
+        <p></p>
+        <img style="max-width:600px" />
+      </div>
+      <p>Our choice was to run a separate task before starting the review app. We want these review apps to start up
+        quickly, and we didn’t want to unnecessarily download the Postgres image only to re-upload it with a small
+        change. The total network throughput of using the custom Postgres image is about 630MB because we have to
+        download it, build the custom Postgres image, and then re-upload it to the user’s Elastic Container Registry
+        (ECR). Doing so would incur a greater data transfer cost to Gander users than using the lightweight Linux image,
+        which has a size of only 5mb — making the choice clear.</p>
+
       <h2 id="routing-traffic">10) Routing Traffic</h2>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander_focus_alb.png" alt="Gander Focus on ALB" />
+      </div>
+      <p>Now that we can orchestrate our containers and run them in a way that allows them to communicate to their
+        database, persist data, and initialize their schema, we have another problem to solve — how do we route traffic
+        to these isolated review apps?</p>
+
       <h3 id="domain-names">10.1) Domain Names</h3>
+      <p>When a task is started on ECS, an Elastic Network Interface is provisioned. This is an Amazon-specific
+        implementation piece and can be thought of simply as a software network card dedicated to the task. These
+        network interfaces are automatically assigned a unique, auto-generated DNS name upon creation. One approach to
+        solving the problem of routing would be to simply use this domain name, and comment on the pull request with
+        this link.</p>
+      <p>However, this solution presents a problem. If the task were to restart due to an error in the container
+        orchestration engine, an application error, or a failure of the host server, there would be a new ENI
+        provisioned with a new DNS name. In this scenario, the link we post in a comment on the pull request will no
+        longer be accurate. Our solution should be able to cope with restarting tasks, which means using the DNS names
+        of the network interfaces is not an option.</p>
+      <div class="img-wrapper" id="lost-route">
+        <p></p>
+        <img style="max-width:800px" />
+      </div>
       <h3 id="application-layer-routing">10.2) Application Layer Routing</h3>
+      <p>To solve this problem, we need to be able to route a stable, user-facing URL to the correct review app. A
+        server that routes incoming traffic to a pool of many servers is called a load balancer[*]. Load balancers are
+        generally used to reduce load on each individual application server. There are essentially two types of load
+        balancers offered by Amazon: layer 4 load balancers and layer 7 load balancers. Layer 4 load balancers operate
+        at the transport layer and route traffic based on network-level information such as ports and IP addresses —
+        information about the message itself is not available to a layer 4 load balancer. </p>
+      <p>For our use case, the main functionality we need is routing traffic to the corresponding review app — if a user
+        requests todo-app-9.gander.my-domain.com, the load balancer should direct it to the todo-app-9 review app. We
+        can't do load balancing based on IP or port because we wouldn't have enough information to route traffic to our
+        review apps without introducing a unique IP address or non-standard port for each review app. This means that we
+        can't use a layer 3 or 4 load balancer.</p>
+
       <h3 id="layer-seven-load-balancer">10.3) Layer Seven Load Balancer</h3>
+      <p>Amazon offers a managed load balancer, called the Elastic Load Balancer, due to its ability to automatically
+        scale based on usage. Within this offering they have what they call an Application Load Balancer, which operates
+        as a layer seven load balancer, routing and can route at the application layer. When a pull request is created,
+        we can create a target group for the service, which means that any tasks created within the service will
+        automatically be registered to the load balancer. This target group has a rule which tells the load balancer
+        which subdomain will route traffic to that application. Because the target group is attached to the service, if
+        a task were to restart due to any of the aforementioned reasons, it will be re-registered automatically to the
+        load balancer, ensuring our links never break.</p>
+
+      <div class="img-wrapper" id="preserved-route">
+        <p></p>
+        <img style="max-width:800px" />
+      </div>
       <h2 id="using-gander">11) Using Gander</h2>
+      <p>We've now finished exploring the AWS side of Gander. We saw how Amazon ECS hosts and manages review apps. We
+        looked at how data persists in Amazon EFS. And we saw how our traffic routes through an Application Load
+        Balancer. </p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander_overview.png" alt="Gander Architecture Overview" />
+      </div>
+      <p>The only piece of the architecture we haven't yet considered is Gander's command line interface. So let's take
+        a look! You can get Gander up and running with just two commands.</p>
+      <p><code>gander setup</code> provisions and configures all of the necessary AWS infrastructure. This
+        infrastructure persists and receives all review apps from any Gander repository. You can see what happens during
+        setup in this screenshot.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander-setup.png" alt="Gander Setup" />
+      </div>
+      <p><code>gander init</code> sets up the GitHub piece of Gander by loading the workflow files into the repository.
+        Here's an example of initialization for a Node.js repository.</p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/gander-init.png" alt="Gander init" />
+      </div>
+      <p>After that, Gander will create an isolated review app for each PR within each initialized repository. Each PR
+        will receive its own semantic link starting with <code>&lt;APP_NAME&gt;-&lt;PR_NUMBER&gt;</code>. </p>
+      <div class="img-wrapper">
+        <img src="images/diagrams/multi-pr.png" alt="Multiple Pull Requests" />
+      </div>
+      <p>Each review app receives its own isolated database, thus previewing each new feature truly in isolation. As
+        multiple review apps can be deployed simultaneously, reviewers can preview multiple features side by side. </p>
       <h2 id="future-work">12) Future Work</h2>
+      <h4>Support Other Databases</h4>
+      <p>Currently, Gander only supports PostgreSQL as a database. In the future we would like to support other
+        relational database management systems, like MySQL, and other non-relational databases, such as: </p>
+      <ul>
+        <li>Wide-column databases such as Apache Cassandra</li>
+        <li>Document databases like MongoDB</li>
+        <li>Graph databases such as Neo4j</li>
+      </ul>
+      <h4>Arbitrary startup scripts for application images</h4>
+      <p>Currently, we rely on Cloud Native Build Packs to set up the entrypoint command for our containers. For some
+        frameworks, this is a problem because they require an explicit startup script to be used. This feature will
+        allow us to generate review apps for a wider variety of frameworks.</p>
+      <h4>Support Rails-style database migrations</h4>
+      <p>This feature would allow us to add runtime to the seeder task, and execute a user-provided command within the
+        context of the application before the review app starts up. One example would be to run rails db:setup during
+        the seeding task, instead of simply placing a .sql file in the EFS directory where our database containers will
+        look for them.</p>
+
       <!-- <h2 id="introduction">1) Introduction</h2>
 
       <p>
@@ -502,26 +1065,8 @@
         <h2 id="references">13) References</h2>
 
         <ol>
-          <li id="footnote-1">
-            <a href="https://martinfowler.com/articles/microservice-trade-offs.html"
-              target="_blank">https://martinfowler.com/articles/microservice-trade-offs.html</a>
-          </li>
-          <li id="footnote-2">
-            <a href="https://www.cl.cam.ac.uk/research/srg/netos/projects/ipc-bench/results.html"
-              target="_blank">https://www.cl.cam.ac.uk/research/srg/netos/projects/ipc-bench/results.html</a>
-          </li>
+          <li>None, we are perfect</li>
         </ol>
-
-        Icons made by
-        <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a>,
-        <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons" target="_blank">Those Icons</a>,
-        <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry" target="_blank">Kiranshastry</a>,
-        <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a>,
-        <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect" target="_blank">Pixel
-          perfect</a>, and
-        <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp" target="_blank">Eucalyp</a>
-        from
-        <a href="https://www.flaticon.com/" title="Flaticon" target="_blank"> www.flaticon.com</a>.
       </section>
     </section>
   </main>

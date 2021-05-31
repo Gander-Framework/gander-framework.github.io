@@ -45,6 +45,7 @@
 
 ------------------------------------ */
 
+
 :root {
   --font-family-header: 'Raleway', bold, sans-serif;
   --font-family-body: 'nunito', sans-serif, lighter;
@@ -62,6 +63,7 @@
 
 body {
   font-family: var(--font-family-body);
+  background-color: var(--color-gander-white)
 }
 
 main {
@@ -341,7 +343,7 @@ pre code {
 }
 
 code {
-  background-color: var(--color-alabaster);
+  background-color: var(--color-gander-dark-gray);
   color: var(--color-gander-font);
   font-family: 'Fira Code', monospace;
   /* font-size: 1rem; */
@@ -561,12 +563,13 @@ h3 {
 }
 
 #case-study .img-wrapper p {
-  font-size: 80%;
   text-align: center;
   width: 50%;
-  line-height: 1rem;
   margin: 0 auto;
-  margin-bottom: 0;
+  margin-top:2rem;
+  margin-bottom:-2rem;
+  font-size:1.2rem;
+  line-height:1.2rem;
 }
 
 #case-study blockquote p {
@@ -711,7 +714,8 @@ h2#references {
 ------------------------------------ */
 
 #our-team {
-  background-color: var(--color-alabaster);
+  background-color: var(--color-gander-white);
+  border-top: solid 3px #EEE;
   color: var(--color-black);
   margin-top: 100px;
   padding-bottom: 25px;
