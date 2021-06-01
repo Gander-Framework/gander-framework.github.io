@@ -854,7 +854,7 @@
 
       <h3 id="container-filesystems">8.1) Container Filesystems</h3>
       <div class="img-wrapper" id="lost-data">
-        <p></p>
+        <p class="block-caption"></p>
         <img  class="w30" />
       </div>
       <p>Since containers view themselves as complete operating systems, they have their own file systems. However, this
@@ -882,7 +882,7 @@
       <h3 id="elastic-file-system">8.3) Elastic File System</h3>
 
       <div class="img-wrapper" id="preserve-data">
-        <p></p>
+        <p class="block-caption"></p>
         <img  class="w30" />
       </div>
       <p>Amazon's Elastic File System is a simple solution for this problem. EFS is a managed file system service that
@@ -926,7 +926,7 @@
         the database to access. This way, when the database is started, it can access the initialization script because
         it is present on the Elastic File System. The total container size of this solution is about 5MB.</p>
       <div class="img-wrapper" id="seed-efs">
-        <p></p>
+        <p class="block-caption"></p>
         <img  class="w30" />
       </div>
       <p>Our choice was to run a separate task before starting the review app. We want these review apps to start up
@@ -956,7 +956,7 @@
         longer be accurate. Our solution should be able to cope with restarting tasks, which means using the DNS names
         of the network interfaces is not an option.</p>
       <div class="img-wrapper" id="lost-route">
-        <p style="display:block;height:3rem"></p>
+        <p class="block-caption"></p>
         <img  class="w30" />
       </div>
       <h3 id="application-layer-routing">10.2) Application Layer Routing</h3>
@@ -985,7 +985,7 @@
         load balancer, ensuring our links never break.</p>
 
       <div class="img-wrapper" id="preserved-route">
-        <p style="display:block;height:3rem"></p>
+        <p class="block-caption"></p>
         <img class="w30" />
       </div>
       <h2 id="using-gander">11) Using Gander</h2>
