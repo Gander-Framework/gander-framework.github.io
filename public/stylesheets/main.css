@@ -246,6 +246,10 @@ img {
   max-width: 800px;
 }
 
+#case-study img.w30 {
+  max-width: 30vw;
+}
+
 #gander-logo {
   font-family: var(--font-family-header);
   font-weight: bold;
@@ -825,7 +829,9 @@ small {
   #case-study nav {
     display: none;
   }
-
+  #case-study img.w30 {
+    max-width: 50vw;
+  }
   nav#case-study-mobile ul {
     margin: 0;
   }
@@ -971,7 +977,6 @@ small {
 
 @media (max-width: 800px) {
   /* General */
-
   h1 {
     font-size: 3.5rem;
   }
