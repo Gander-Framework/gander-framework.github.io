@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setInterval(_changeText, 1250);
   })();
+  
   const rotateImages = ({images, descriptors, selector, interval}) => {
     let i = -1;
     const _changeImage = () => {
