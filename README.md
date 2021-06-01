@@ -1,7 +1,7 @@
 # 🏠 [Homepage](https://gander-framework.github.io/)
 
 <p align="center">
-  <img src="public/images/logos/gander_logo_color.png" width="500" height="200" />
+  <img src="public/images/logos/gander_logo_color.png" />
 </p>
 ## Gander: Open Source Review Apps
 
