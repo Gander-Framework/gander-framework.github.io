@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     selector: 'preserved-route',
     images: ['preserved-route-1.png','preserved-route-2.png','preserved-route-3.png'],
     descriptors: [
-      '1. The link routes to the app through the load balancer',
+      '1. The link to the review app routes through the load balancer',
       '2. The Task can restart suddenly',
       '3. The new task automatically registers to the load balancer'
     ],
