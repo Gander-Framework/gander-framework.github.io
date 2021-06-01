@@ -1,6 +1,6 @@
 # 🏠 [Homepage](https://gander-framework.github.io/)
 
-![Gander logo](images/logos/gander_logo.png)
+![Gander logo](public/images/logos/gander_logo.png)
 
 ## Gander: Open Source Review Apps
 
