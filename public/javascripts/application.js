@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   (() => {
-    const words = ["isolated","fullstack", "ephemeral"];
+    const words = ["isolated","full-stack", "ephemeral"];
     let i = 0;
     const _changeText = () => {
       i = (i + 1) % words.length;
