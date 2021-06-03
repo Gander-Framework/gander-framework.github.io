@@ -547,7 +547,7 @@
         per account per month, which can support between 200-300 pull requests per month depending on the size of your
         project. </p>
       <div class="img-wrapper">
-        <img src="images/diagrams/workflows.png" alt="GitHub Actions Diagram"  class="w30" />
+        <img src="images/diagrams/workflows.png" alt="GitHub Actions Diagram" class="w30" />
       </div>
       <p>Additionally, GitHub Actions allows us to run these workflows within the existing context of the users'
         repositories, eliminating the need to authenticate with the GitHub API. We can easily access information such as
@@ -605,8 +605,7 @@
         storage on the servers will go unused. A more resource-efficient alternative to single-tenancy is multi-tenancy
         — running multiple applications on the same server. But this creates a new problem: dependency conflicts.</p>
       <div class="img-wrapper">
-        <img src="images/diagrams/shared_host.png" alt="Shared Hosts bring dependency conflicts"
-           class="w30" />
+        <img src="images/diagrams/shared_host.png" alt="Shared Hosts bring dependency conflicts" class="w30" />
       </div>
       <p>For example, if todo-app-1 depends on library 1.0.0, while chat-app-1 depends on library 2.0.0, one project's
         version of the dependency will overwrite the other. To keep the two versions of library separate, we would have
@@ -622,7 +621,7 @@
         dependencies between applications by having each application installed on its own virtual machine, and run many
         virtual machines on a single server to achieve multi-tenancy.</p>
       <div class="img-wrapper">
-        <img src="images/diagrams/virtual_machine.png" alt="Virtual Machines Isolate Systems"  class="w30" />
+        <img src="images/diagrams/virtual_machine.png" alt="Virtual Machines Isolate Systems" class="w30" />
       </div>
       <p>Because each VM thinks of itself as a physical computer, the server hosting these virtual machines uses a
         hypervisor to manage access to hardware. This is to avoid hardware access conflicts. Virtual machines are not
@@ -641,7 +640,7 @@
         more portable than virtual machines. This is the reason that we chose to use containers for Gander —
         containerizing allows us to have highly portable, isolated review apps.</p>
       <div class="img-wrapper">
-        <img src="images/diagrams/containers.png" alt="Containers isolate applications"  class="w30" />
+        <img src="images/diagrams/containers.png" alt="Containers isolate applications" class="w30" />
       </div>
       <p>Containers also give us the ability to implement multi-tenancy with projects that use a variety of languages
         and frameworks. Our architecture for managing review apps will interact with the apps at the container level,
@@ -652,8 +651,7 @@
       </div>
       <p>We run our databases in containers as well, which provides several benefits.</p>
       <div class="img-wrapper">
-        <img src="images/diagrams/containers-multi-tenant.png" alt="Containers allow for Multi Tenancy"
-           class="w30" />
+        <img src="images/diagrams/containers-multi-tenant.png" alt="Containers allow for Multi Tenancy" class="w30" />
       </div>
       <p>With containerized databases, we avoid the need to deal with any potential conflicts between databases running
         on the same machine, such as port conflicts or naming conflicts. If one database fails, the other review app
@@ -668,7 +666,7 @@
         stored in a registry, and it will be pulled from that registry when it is time to run a container based on that
         image.</p>
       <div class="img-wrapper">
-        <img src="images/diagrams/image-to-container.png" alt="Images become Containers"  class="w30" />
+        <img src="images/diagrams/image-to-container.png" alt="Images become Containers" class="w30" />
       </div>
       <p>We can pull an image for our database container from a registry of pre-built database images because nothing
         about the database itself will be application-specific. The application image, though, is something we will need
@@ -759,8 +757,7 @@
         servers and distributing the containers as efficiently as possible. We'll have to think about scaling up
         additional servers when needed as well.</p>
       <div class="img-wrapper">
-        <img src="images/diagrams/orchestration-placement.png" alt="Where do we put these containers?"
-           class="w30" />
+        <img src="images/diagrams/orchestration-placement.png" alt="Where do we put these containers?" class="w30" />
       </div>
       <p>We also want to keep our application available if a container fails, so our container management will need to
         include restarting on failure. If a container fails, we want to run another container from the same image in its
@@ -768,15 +765,14 @@
         restarting a new server, and then running replacement containers on it.</p>
       <div class="img-wrapper">
         <img src="images/diagrams/orchestration-failures.png" alt="How do we cope with container failures?"
-           class="w30" />
+          class="w30" />
       </div>
       <p>We also need our containers to communicate with each other. The application API container and its database must
         be networked together into a group to form a review app. That container group has to know what order to start up
         containers in and how the containers relate to one another. Routing to these container groups also needs to be
         maintained even as individual containers fail, restart, and receive new IP addresses in the process.</p>
       <div class="img-wrapper">
-        <img src="images/diagrams/orchestration-intranet.png" alt="Containers need to talk to each other"
-           class="w30" />
+        <img src="images/diagrams/orchestration-intranet.png" alt="Containers need to talk to each other" class="w30" />
       </div>
       <p>All of these container management operations are normally grouped under the concept of "container
         orchestration". And so we needed to decide how Gander would handle container orchestration.</p>
@@ -803,8 +799,7 @@
         that for us.</p>
       <div class="img-wrapper">
         <p class="caption">A Gander Review App on Amazon ECS</p>
-        <img src="images/diagrams/what-is-a-task.png" alt="A Task consists of an API and a Database"
-           class="w30" />
+        <img src="images/diagrams/what-is-a-task.png" alt="A Task consists of an API and a Database" class="w30" />
       </div>
       <p>Defining our review apps as tasks allows us to deploy our containers as fully-formed review apps rather than as
         individual containers. The task definitions that we provide to ECS list the required container images and
@@ -855,7 +850,7 @@
       <h3 id="container-filesystems">8.1) Container Filesystems</h3>
       <div class="img-wrapper" id="lost-data">
         <p class="block-caption"></p>
-        <img  class="w30" />
+        <img class="w30" />
       </div>
       <p>Since containers view themselves as complete operating systems, they have their own file systems. However, this
         file system is tied to the lifecycle of the container. So if the container were to restart due to a network
@@ -869,7 +864,7 @@
 
       <h3 id="volumes">8.2) Volumes</h3>
       <div class="img-wrapper">
-        <img src="images/diagrams/volumes-on-vm.png" alt="Volumes on a Virtual Machine"  class="w30" />
+        <img src="images/diagrams/volumes-on-vm.png" alt="Volumes on a Virtual Machine" class="w30" />
       </div>
       <p>The typical way to persist containers' data is to connect containers to volumes. Volumes act as a symbolic link
         between a directory on the container's internal file system and the host machine's file-system. Using volumes,
@@ -883,7 +878,7 @@
 
       <div class="img-wrapper" id="preserve-data">
         <p class="block-caption"></p>
-        <img  class="w30" />
+        <img class="w30" />
       </div>
       <p>Amazon's Elastic File System is a simple solution for this problem. EFS is a managed file system service that
         is available over the network. It scales automatically and is fault tolerant within a region. It still behaves
@@ -917,7 +912,7 @@
 
       <div class="img-wrapper">
         <p></p>
-        <img src="images/diagrams/Seed_Database-1.png"  class="w30" />
+        <img src="images/diagrams/Seed_Database-1.png" class="w30" />
       </div>
       <h3 id="custom-linux-image">9.3) Custom Linux Image</h3>
       <p>Another potential solution is to run a separate task before starting the review app. We can create this by
@@ -927,7 +922,7 @@
         it is present on the Elastic File System. The total container size of this solution is about 5MB.</p>
       <div class="img-wrapper" id="seed-efs">
         <p class="block-caption"></p>
-        <img  class="w30" />
+        <img class="w30" />
       </div>
       <p>Our choice was to run a separate task before starting the review app. We want these review apps to start up
         quickly, and we didn’t want to unnecessarily download the Postgres image only to re-upload it with a small
@@ -1099,19 +1094,39 @@
         <h2 id="references">13) References</h2>
 
         <ol>
-          <li id="footnote-1"><a href="https://about.gitlab.com/blog/2016/11/22/introducing-review-apps/">https://about.gitlab.com/blog/2016/11/22/introducing-review-apps/</a></li>
-<li id="footnote-2"><a href="https://blog.heroku.com/heroku_flow_pipelines_review_apps_and_github_sync">https://blog.heroku.com/heroku_flow_pipelines_review_apps_and_github_sync</a></li>
-<li id="footnote-3"><a href="https://blog.heroku.com/heroku_review_apps_beta">https://blog.heroku.com/heroku_review_apps_beta</a></li>
-<li id="footnote-4"><a href="https://layerci.com/blog/what-is-an-ephemeral-environment/">https://layerci.com/blog/what-is-an-ephemeral-environment/</a></li>
-<li id="footnote-5"><a href="https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</a></li>
-<li id="footnote-6"><a href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks">https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks</a></li>
-<li id="footnote-7"><a href="https://docs.docker.com/get-started/overview/">https://docs.docker.com/get-started/overview/</a></li>
-<li id="footnote-8"><a href="https://buildpacks.io/">https://buildpacks.io/</a></li>
-<li id="footnote-9"><a href="https://www.cncf.io/about/who-we-are/">https://www.cncf.io/about/who-we-are/</a></li>
-<li id="footnote-10"><a href="https://buildpacks.io/docs/concepts/components/builder/">https://buildpacks.io/docs/concepts/components/builder/</a></li>
-<li id="footnote-11"><a href="http://gcr.io/buildpacks/builder:v1">http://gcr.io/buildpacks/builder:v1</a></li>
-<li id="footnote-12"><a href="https://paketo.io/docs/builders/">https://paketo.io/docs/builders/</a></li>
-<li id="footnote-13"><a href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a></li>
+          <li id="footnote-1"><a
+              href="https://about.gitlab.com/blog/2016/11/22/introducing-review-apps/">https://about.gitlab.com/blog/2016/11/22/introducing-review-apps/</a>
+          </li>
+          <li id="footnote-2"><a
+              href="https://blog.heroku.com/heroku_flow_pipelines_review_apps_and_github_sync">https://blog.heroku.com/heroku_flow_pipelines_review_apps_and_github_sync</a>
+          </li>
+          <li id="footnote-3"><a
+              href="https://blog.heroku.com/heroku_review_apps_beta">https://blog.heroku.com/heroku_review_apps_beta</a>
+          </li>
+          <li id="footnote-4"><a
+              href="https://layerci.com/blog/what-is-an-ephemeral-environment/">https://layerci.com/blog/what-is-an-ephemeral-environment/</a>
+          </li>
+          <li id="footnote-5"><a
+              href="https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</a>
+          </li>
+          <li id="footnote-6"><a
+              href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks">https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks</a>
+          </li>
+          <li id="footnote-7"><a
+              href="https://docs.docker.com/get-started/overview/">https://docs.docker.com/get-started/overview/</a>
+          </li>
+          <li id="footnote-8"><a href="https://buildpacks.io/">https://buildpacks.io/</a></li>
+          <li id="footnote-9"><a href="https://www.cncf.io/about/who-we-are/">https://www.cncf.io/about/who-we-are/</a>
+          </li>
+          <li id="footnote-10"><a
+              href="https://buildpacks.io/docs/concepts/components/builder/">https://buildpacks.io/docs/concepts/components/builder/</a>
+          </li>
+          <li id="footnote-11"><a href="http://gcr.io/buildpacks/builder:v1">http://gcr.io/buildpacks/builder:v1</a>
+          </li>
+          <li id="footnote-12"><a href="https://paketo.io/docs/builders/">https://paketo.io/docs/builders/</a></li>
+          <li id="footnote-13"><a
+              href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a>
+          </li>
 
         </ol>
       </section>
@@ -1248,7 +1263,7 @@
           </li>
 
           <li>
-            <a href="#" target="_blank">
+            <a href="#" target="https://mhlim.com">
               <img src="images/icons/website_icon.png" alt="website" />
             </a>
           </li>
