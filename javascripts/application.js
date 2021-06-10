@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '2. The Task can restart suddenly',
       '3. The new ENI has a different domain name'
     ],
-    interval: 3000
+    interval: 5000
   });
  
   rotateImages({
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '2. The Task can restart suddenly',
       '3. The new task automatically registers to the load balancer'
     ],
-    interval: 3000
+    interval: 5000
   });
  
   const ganderWhite = '#F6F5F5';
