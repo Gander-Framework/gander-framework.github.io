@@ -209,7 +209,7 @@
       </ul>
       <h3 id="gander-features">1.2) Gander Features</h3>
       <p>
-        As review apps are simply tools to make the development and reviewing processes more convenient, we strove to
+        As review apps are tools to make the development and reviewing processes more convenient, we strove to
         make Gander as easy to use and as configuration-free as possible. Simply bring a code repository and your AWS
         credentials, and Gander takes care of the rest. With a simple command in our CLI and no required config files,
         Gander users can:
@@ -360,7 +360,11 @@
       <P>For developers looking for just a simple review app solution and not a whole development pipeline or
         code-hosting service, review applications as a feature aren't an ideal solution.</P>
       <h3 id="review-apps-as-a-service">3.2) Review Apps as a Service</h3>
-      <p>The second category is review apps as a service. Services like Tugboat and Reploy offer a proprietary,
+      <p>The second category is review apps as a service. Services like Tugboat<sup>
+          <a href="#footnote-14" target="_self"></a>
+        </sup> and Reploy<sup>
+          <a href="#footnote-15" target="_self">15</a>
+        </sup> offer a proprietary,
         configurable platform for deploying and managing review apps. These platforms include many useful features
         beyond simply deploying a review app, such as customized build steps and integrations with other services.
         However, using a feature-rich review app platform does come with certain limitations: </p>
@@ -540,7 +544,7 @@
 
       <h3 id="github-actions">5.3) Github Actions</h3>
       <p>Thankfully, there is an alternative to webhooks that better suits our use-case — GitHub Actions. GitHub Actions
-        is a workflow automation tool that executes on their servers, eliminating the need for our users to provision,
+        is a workflow automation tool that executes on Github's servers, eliminating the need for our users to provision,
         maintain, and configure an entirely separate build server. Running our workflows on GitHub's servers through
         Actions also means that our users are not incurring any costs or consuming any compute resources when there is
         no build or tear-down to be run. GitHub Actions has a free tier available that contains 2000 minutes of compute
@@ -733,7 +737,7 @@
         <img src="images/diagrams/cnb_table.png" alt="Cloud Native Buildpacks -- Best of Both Worlds" />
       </div>
       <p>Buildpacks give us the best of both worlds: simplicity for the user alongside support for multiple frameworks.
-        So far we've successfully run review apps for projects written with Go, Node, Django, and Ruby. Buildpacks can
+        So far we've successfully run review apps for projects written with Go, Node, Python, and Ruby. Buildpacks can
         also support .NET, PHP, and Java, and we plan to test these languages as well in future work.</p>
       <div class="img-wrapper">
         <img src="images/diagrams/gander-languages-supported.png" alt="Gander Languages Supported" />
@@ -904,7 +908,7 @@
 
       <h3 id="extend-the-default-postgres-image">9.2) Extend the Default Postgres Image</h3>
       <p>Our first thought was to extend the public Postgres container image so that it has our initialization script
-        already inside. This can be done easily, by writing a Docker file that copies the initialization script into the
+        already inside. This can be done easily, by writing a Dockerfile that copies the initialization script into the
         database's entry point directory, and then we can use that custom Postgres image instead of the default Postgres
         image. We would have to upload this container image to the same registry as our application server. When we run
         this custom Postgres container, it would then be able to initialize the schema and data so that the application
@@ -1126,6 +1130,12 @@
           <li id="footnote-12"><a href="https://paketo.io/docs/builders/">https://paketo.io/docs/builders/</a></li>
           <li id="footnote-13"><a
               href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a>
+          </li>
+          <li id="footnote-14"><a
+              href="https://tugboat.qa">https://tugboat.qa</a>
+          </li>
+          <li id="footnote-15"><a
+              href="https://getreploy.com">https://getreploy.com</a>
           </li>
 
         </ol>
