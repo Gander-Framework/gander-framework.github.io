@@ -248,25 +248,25 @@
       </p>
       <h2 id="review-apps">2) Review Apps</h2>
       <p>Review apps are <em>ephemeral apps</em>, meaning they're temporary deployments with a self-contained version of
-        your app <sup>
+        your app.<sup>
           <a href="#footnote-1" target="_self">1</a>,
-          <a href="#footnote-4" target="_self">4</a>
-        </sup>. Generally speaking, these apps are created on demand each time a feature needs to be
+          <a href="#footnote-2" target="_self">2</a>
+        </sup> Generally speaking, these apps are created on demand each time a feature needs to be
         reviewed
-        and then automatically deleted when the review is completed and the pull request is closed <sup>
+        and then automatically deleted when the review is completed and the pull request is closed.<sup>
           <a href="#footnote-1" target="_self">1</a>
-        </sup>.</p>
+        </sup></p>
       <p>Review apps are easily shared, making it possible to include not only developers, but also non-technical
         reviewers during development. Team members such as designers, project managers, and clients can receive a link,
-        try out new features in a browser and give feedback <sup>
-          <a href="#footnote-2" target="_self">2</a></sup>. </p>
+        try out new features in a browser and give feedback.<sup>
+          <a href="#footnote-3" target="_self">3</a></sup></p>
       <blockquote>Review Apps provide easier and better testing for features and fixes in isolation . . . [They] speed
         up team decision-making so that you can deliver better apps faster, and with greater confidence.
 
         <br /><br />
-        - Heroku Pipelines <sup>
-          <a href="#footnote-2" target="_self">2</a>,
-          <a href="#footnote-3" target="_self">3</a>
+        - Heroku Pipelines<sup>
+          <a href="#footnote-3" target="_self">3</a>,
+          <a href="#footnote-4" target="_self">4</a>
         </sup>
       </blockquote>
 
@@ -292,14 +292,14 @@
         code is merged, the PR is closed, and the app is deployed to some viewing environment such as staging. This
         means if there's an issue with some new feature, our developer would have to repeat the development cycle of
         branching, developing and merging before receiving another review. Moreover, the code itself would have to go
-        through all the stages of the development pipeline before being viewed once again <sup>
-          <a href="#footnote-1" target="_self">1</a>,
-        </sup>. </p>
+        through all the stages of the development pipeline before being viewed once again.<sup>
+          <a href="#footnote-1" target="_self">1</a>
+        </sup></p>
 
       <div class="img-wrapper">
         <img src="images/diagrams/dev_flow_w_o_review.png" alt="Development cycle without review apps" />
       </div>
-      <h3 id="development-with-review-apps">2.1) Development with Review Apps</h3>
+      <h3 id="development-with-review-apps">2.2) Development with Review Apps</h3>
       <P>Review apps provide an easy way to shorten the feedback loop between developers and non-developers. With review
         apps, our developer's cycle from above may now look something like this:</P>
 
@@ -309,15 +309,15 @@
       <p>Before merging the feature into the main branch, we can create a review app and share it with other developers,
         designers, and clients for a truly well-rounded review process involving all stakeholders. Developers viewing
         the code will no longer have to guess what the code does, as they can interact with the application directly in
-        their browser <sup>
-          <a href="#footnote-2" target="_self">2</a>
-        </sup>. Designers can see how their creations integrate with users' interactions and experiences.
+        their browser.<sup>
+          <a href="#footnote-3" target="_self">3</a>
+        </sup> Designers can see how their creations integrate with users' interactions and experiences.
         Clients can step into their users' shoes and truly understand the digital experience created from their
         guidelines.</p>
       <p>Most importantly, by involving more team members earlier within the development process, review apps can
-        shorten the feedback loop and speed up the time for development <sup>
-          <a href="#footnote-3" target="_self">3</a>
-        </sup>. This means that buggy code can be caught
+        shorten the feedback loop and speed up the time for development.<sup>
+          <a href="#footnote-4" target="_self">4</a>
+        </sup> This means that buggy code can be caught
         earlier in the process by QA teams, and never gets merged in the first place. This leads to a higher velocity of
         development, leading to an overall reduced cost of development.</p>
       <p>All in all, review apps are a convenient tool to help developers:
@@ -361,9 +361,9 @@
         code-hosting service, review applications as a feature aren't an ideal solution.</P>
       <h3 id="review-apps-as-a-service">3.2) Review Apps as a Service</h3>
       <p>The second category is review apps as a service. Services like Tugboat<sup>
-          <a href="#footnote-14" target="_self"></a>
+          <a href="#footnote-5" target="_self">5</a>
         </sup> and Reploy<sup>
-          <a href="#footnote-15" target="_self">15</a>
+          <a href="#footnote-6" target="_self">6</a>
         </sup> offer a proprietary,
         configurable platform for deploying and managing review apps. These platforms include many useful features
         beyond simply deploying a review app, such as customized build steps and integrations with other services.
@@ -502,9 +502,9 @@
       <p>Given our goal of enabling relevant stakeholders to review new features earlier in development, pull requests
         are a perfect trigger for deploying review apps. Pull requests are a mechanism by which developers notify other
         team members that they have a completed feature ready for review. The feature is then reviewed and approved
-        before being merged into a more stable branch of the codebase <sup>
-          <a href="#footnote-5" target="_self">5</a>
-        </sup>. </p>
+        before being merged into a more stable branch of the codebase.<sup>
+          <a href="#footnote-7" target="_self">7</a>
+        </sup></p>
       <p>A typical lifecycle of a pull request looks something like this:</p>
       <div class="img-wrapper">
         <img src="images/diagrams/pull_request_lifecycle.png" alt="Pull Request Flow Chart" />
@@ -521,9 +521,9 @@
       <h3 id="webhooks">5.2) Webhooks</h3>
       <p>Webhooks are a way for applications to send automatic notifications to other applications whenever a certain
         event occurs. These notifications usually take the form of a POST request containing a payload with any relevant
-        metadata about the event <sup>
-          <a href="#footnote-6" target="_self">6</a>
-        </sup>. GitHub enables webhook integrations that can send these POST requests to whatever
+        metadata about the event.<sup>
+          <a href="#footnote-8" target="_self">8</a>
+        </sup> GitHub enables webhook integrations that can send these POST requests to whatever
         endpoint the user specifies.</p>
       <div class="img-wrapper">
         <img src="images/diagrams/webhooks.png" alt="Webhook Diagram" class="w30" />
@@ -662,9 +662,9 @@
         won't be affected. So each of our review apps runs in two containers: one container for the application source
         code, and one container for the database.</p>
       <p>Before a container can be brought to life, we must build an image. An image is a static, read-only template
-        with instructions for creating a container <sup>
-          <a href="#footnote-7" target="_self">7</a>
-        </sup>, while a container is an ephemeral process that runs from an
+        with instructions for creating a container,<sup>
+          <a href="#footnote-9" target="_self">9</a>
+        </sup> while a container is an ephemeral process that runs from an
         image. Similar to how a class contains the blueprint for instantiating any number of objects of its type, an
         image contains the blueprint for running any number of containers based on its instructions. A built image is
         stored in a registry, and it will be pulled from that registry when it is time to run a container based on that
@@ -698,13 +698,13 @@
         framework, one by one. Our list of supported frameworks would be restricted by the time we had available to
         write and debug framework-specific containerizing code.</p>
       <h3 id="cloud-native-buildpacks">6.4) Cloud Native Buildpacks</h3>
-      <p>The third option is Cloud Native Buildpacks <sup>
-          <a href="#footnote-8" target="_self">8</a>
-        </sup>, a project by the Cloud Native Computing Foundation (CNCF). The
+      <p>The third option is Cloud Native Buildpacks,<sup>
+          <a href="#footnote-10" target="_self">10</a>
+        </sup> a project by the Cloud Native Computing Foundation (CNCF). The
         CNCF is an organization dedicated to open-source projects that "empower organizations to build and run scalable
-        applications in modern, dynamic environments such as public, private, and hybrid clouds" <sup>
-          <a href="#footnote-9" target="_self">9</a>
-        </sup>. Many CNCF
+        applications in modern, dynamic environments such as public, private, and hybrid clouds."<sup>
+          <a href="#footnote-11" target="_self">11</a>
+        </sup> Many CNCF
         projects, such as Kubernetes, are container technologies. </p>
       <p>Cloud Native Buildpacks is a container tool that transforms source code into a runnable container image using a
         three-stage process of detection, building, and exporting. The container images exported by Buildpacks are Open
@@ -716,21 +716,21 @@
       </div>
       <p>Buildpacks are a powerful tool that can containerize a project without requiring the user to write any
         configuration files. How is this possible? First, the user must select a specific "builder" to apply to a
-        project <sup>
-          <a href="#footnote-10" target="_self">10</a>
-        </sup>. The builder then detects the project's language and selects from its arsenal of buildpacks as
+        project.<sup>
+          <a href="#footnote-12" target="_self">12</a>
+        </sup> The builder then detects the project's language and selects from its arsenal of buildpacks as
         needed to execute the image build appropriately for that specific project. The buildpacks build the code into
         runnable artifacts, and those artifacts are transformed into a container image that is exported and made
         available for running a container.</p>
       <p>Gander does the work of selecting the builder on behalf of the user, based on Cloud Native recommendations.
         These builders all support multiple languages, but we do ask the Gander user to indicate their project's
-        language, to make sure that we choose the best builder possible. We use the Google Cloud Builder <sup>
-          <a href="#footnote-11" target="_self">11</a>
+        language, to make sure that we choose the best builder possible. We use the Google Cloud Builder<sup>
+          <a href="#footnote-13" target="_self">13</a>
         </sup> for Python
         apps; the Paketo Base builder for apps written in Node.js, Golang, Java, or .NET; and the Paketo Full builder
-        for apps written in Ruby or PHP <sup>
-          <a href="#footnote-12" target="_self">12</a>
-        </sup>. Users can also write a Procfile with their app configuration information if
+        for apps written in Ruby or PHP.<sup>
+          <a href="#footnote-14" target="_self">14</a>
+        </sup> Users can also write a Procfile with their app configuration information if
         they wish to be explicit and bypass the auto-detect functionality, in which case we use the Paketo Base builder.
       </p>
       <div class="img-wrapper">
@@ -829,7 +829,9 @@
         responsibility for using servers efficiently and keeping them running near maximum capacity. </p>
       <p>We chose to use Fargate rather than EC2 because Gander will only run a relatively small number of containers at
         any given time. It would be very difficult for us to occupy servers efficiently with a handful of ephemeral and
-        isolated applications. </p>
+        isolated applications.<sup>
+          <a href="#footnote-15" target="_self">15</a>
+        </sup></p>
       <div class="img-wrapper">
         <img src="images/diagrams/ec2-reservation-rate.png" alt="EC2 Reservation Rate" />
       </div>
@@ -960,9 +962,9 @@
       </div>
       <h3 id="application-layer-routing">10.2) Application Layer Routing</h3>
       <p>To solve this problem, we need to be able to route a stable, user-facing URL to the correct review app. A
-        server that routes incoming traffic to a pool of many servers is called a load balancer <sup>
-          <a href="#footnote-13" target="_self">13</a>
-        </sup>. Load balancers are
+        server that routes incoming traffic to a pool of many servers is called a load balancer.<sup>
+          <a href="#footnote-16" target="_self">16</a>
+        </sup> Load balancers are
         generally used to reduce load on each individual application server. There are essentially two types of load
         balancers offered by Amazon: layer 4 load balancers and layer 7 load balancers. Layer 4 load balancers operate
         at the transport layer and route traffic based on network-level information such as ports and IP addresses —
@@ -1013,7 +1015,9 @@
         <img src="images/diagrams/multi-pr.png" alt="Multiple Pull Requests" />
       </div>
       <p>Each review app receives its own isolated database, thus previewing each new feature truly in isolation. As
-        multiple review apps can be deployed simultaneously, reviewers can preview multiple features side by side. </p>
+        multiple review apps can be deployed simultaneously, reviewers can preview multiple features side by side. 
+        If the code is modified before closing or merging the pull request, the application is torn down and rebuilt
+        based on the new commit. And when the pull request is closed, the relevant containers are destroyed.</p>
       <h2 id="future-work">12) Future Work</h2>
       <h4>Support Other Databases</h4>
       <p>Currently, Gander only supports PostgreSQL as a database. In the future we would like to support other
@@ -1102,42 +1106,44 @@
               href="https://about.gitlab.com/blog/2016/11/22/introducing-review-apps/">https://about.gitlab.com/blog/2016/11/22/introducing-review-apps/</a>
           </li>
           <li id="footnote-2"><a
-              href="https://blog.heroku.com/heroku_flow_pipelines_review_apps_and_github_sync">https://blog.heroku.com/heroku_flow_pipelines_review_apps_and_github_sync</a>
-          </li>
-          <li id="footnote-3"><a
-              href="https://blog.heroku.com/heroku_review_apps_beta">https://blog.heroku.com/heroku_review_apps_beta</a>
-          </li>
-          <li id="footnote-4"><a
               href="https://layerci.com/blog/what-is-an-ephemeral-environment/">https://layerci.com/blog/what-is-an-ephemeral-environment/</a>
           </li>
+          <li id="footnote-3"><a
+              href="https://blog.heroku.com/heroku_flow_pipelines_review_apps_and_github_sync">https://blog.heroku.com/heroku_flow_pipelines_review_apps_and_github_sync</a>
+          </li>
+          <li id="footnote-4"><a
+              href="https://blog.heroku.com/heroku_review_apps_beta">https://blog.heroku.com/heroku_review_apps_beta</a>
+          </li>
           <li id="footnote-5"><a
-              href="https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</a>
-          </li>
-          <li id="footnote-6"><a
-              href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks">https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks</a>
-          </li>
-          <li id="footnote-7"><a
-              href="https://docs.docker.com/get-started/overview/">https://docs.docker.com/get-started/overview/</a>
-          </li>
-          <li id="footnote-8"><a href="https://buildpacks.io/">https://buildpacks.io/</a></li>
-          <li id="footnote-9"><a href="https://www.cncf.io/about/who-we-are/">https://www.cncf.io/about/who-we-are/</a>
-          </li>
-          <li id="footnote-10"><a
-              href="https://buildpacks.io/docs/concepts/components/builder/">https://buildpacks.io/docs/concepts/components/builder/</a>
-          </li>
-          <li id="footnote-11"><a href="http://gcr.io/buildpacks/builder:v1">http://gcr.io/buildpacks/builder:v1</a>
-          </li>
-          <li id="footnote-12"><a href="https://paketo.io/docs/builders/">https://paketo.io/docs/builders/</a></li>
-          <li id="footnote-13"><a
-              href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a>
-          </li>
-          <li id="footnote-14"><a
               href="https://tugboat.qa">https://tugboat.qa</a>
           </li>
-          <li id="footnote-15"><a
+          <li id="footnote-6"><a
               href="https://getreploy.com">https://getreploy.com</a>
           </li>
-
+          <li id="footnote-7"><a
+              href="https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</a>
+          </li>
+          <li id="footnote-8"><a
+              href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks">https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks</a>
+          </li>
+          <li id="footnote-9"><a
+              href="https://docs.docker.com/get-started/overview/">https://docs.docker.com/get-started/overview/</a>
+          </li>
+          <li id="footnote-10"><a href="https://buildpacks.io/">https://buildpacks.io/</a></li>
+          <li id="footnote-11"><a href="https://www.cncf.io/about/who-we-are/">https://www.cncf.io/about/who-we-are/</a>
+          </li>
+          <li id="footnote-12"><a
+              href="https://buildpacks.io/docs/concepts/components/builder/">https://buildpacks.io/docs/concepts/components/builder/</a>
+          </li>
+          <li id="footnote-13"><a href="http://gcr.io/buildpacks/builder:v1">http://gcr.io/buildpacks/builder:v1</a>
+          </li>
+          <li id="footnote-14"><a href="https://paketo.io/docs/builders/">https://paketo.io/docs/builders/</a></li>
+          <li id="footnote-15"><a
+              href="https://www.trek10.com/blog/fargate-pricing-vs-ec2">https://www.trek10.com/blog/fargate-pricing-vs-ec2</a>
+          </li>
+          <li id="footnote-16"><a
+              href="https://www.nginx.com/resources/glossary/load-balancing/">https://www.nginx.com/resources/glossary/load-balancing/</a>
+          </li>
         </ol>
       </section>
     </section>
